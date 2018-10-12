@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div id="app-container">
 
-
+    <tu-footer></tu-footer>
   </div>
 </template>
 
