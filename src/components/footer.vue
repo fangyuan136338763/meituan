@@ -1,8 +1,8 @@
 <template>
     <div id="footer">
-            <div v-on:click="getActive(i,$event)" class="footer-item" v-for="(p,i) in list" :key="i">
+            <div class="footer-item" v-for="(p,i) in list" :key="i">
                 <router-link :to="path[i]">
-                        <i :class="i==0?'active':''"></i>
+                        <i :class="i==index?'active':''"></i>
                         <p>{{p}}</p>
                 </router-link>
             </div>
@@ -15,11 +15,12 @@ export default {
     data: function(){
         return {
             list:["首页","订单","我的"],
-            path:["/home","/order","/mine"]
+            path:["/home","/order","/mine"],
+            index: 0
         }
     },
     methods:{
-        getActive: function(n,e){
+        /* getActive: function(n,e){
             if(e.target.nodeName=="P" || e.target.nodeName=="I"){
                 var parent = e.target.parentNode;
                 var footer = document.getElementById("footer");
@@ -27,13 +28,16 @@ export default {
                 for(var item of iList){
                     item.className = "";
                 }
-                console.log(n);
                 iList[n].className = "active";
                 console.log(e.target)
             }
-        }
+        } */
     },
-    created(){}
+    created(){
+        console.log(this.$route.path);
+        this.index = this.path.indexOf(this.$route.path);
+        console.log(this.index);
+    }
 }
 </script>
 

@@ -1,7 +1,6 @@
 <template>
-    <div>
-        <h1>我的组件</h1>
-        <tu-footer></tu-footer>
+    <div class="location-page">
+        <h1>定位组件</h1>
     </div>
 </template>
 

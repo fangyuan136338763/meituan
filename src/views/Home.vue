@@ -1,17 +1,18 @@
 <template>
     <div class="header-container">
         <div class="top-container">
-            <a class="top-left">
+            <router-link class="top-left" to="/home/location">
                 <i class="mui-icon mui-icon-location"></i>
                 <span>武汉市-湖北省</span>
                 <i class="mui-icon mui-icon-forward"></i>
-            </a>
+            </router-link>
             <a class="top-right">
                 <i class="mui-icon mui-icon-search"></i>
                 鸡排
             </a>
         </div>
         <a href="#" class="bg-img"><img src="../../public/img/index/bannertemp.e8a6fa63.jpg" alt=""></a>
+        <tu-footer></tu-footer>
     </div>
 </template>
 
