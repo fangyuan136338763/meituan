@@ -1,23 +1,11 @@
 <template>
     <div id="footer">
-        <div class="footer-item">
-            <a href="#">
-                <i></i>
-                <p>首页</p>
-            </a>
-        </div>
-        <div class="footer-item">
-            <a href="#">
-                <i></i>
-                <p>订单</p>
-            </a>
-        </div>
-        <div class="footer-item">
-            <a href="#">
-                <i></i>
-                <p>我的</p>
-            </a>
-        </div>
+            <div v-on:click="getActive(i,$event)" class="footer-item" v-for="(p,i) in list" :key="i">
+                <router-link :to="path[i]">
+                        <i :class="i==0?'active':''"></i>
+                        <p>{{p}}</p>
+                </router-link>
+            </div>
     </div>
 </template>
 
@@ -25,14 +13,31 @@
 export default {
     name: "tu-footer",
     data: function(){
-        return {}
+        return {
+            list:["首页","订单","我的"],
+            path:["/home","/order","/mine"]
+        }
     },
-    methods:{},
+    methods:{
+        getActive: function(n,e){
+            if(e.target.nodeName=="P" || e.target.nodeName=="I"){
+                var parent = e.target.parentNode;
+                var footer = document.getElementById("footer");
+                var iList = footer.querySelectorAll("#footer i");
+                for(var item of iList){
+                    item.className = "";
+                }
+                console.log(n);
+                iList[n].className = "active";
+                console.log(e.target)
+            }
+        }
+    },
     created(){}
 }
 </script>
 
-<style>
+<style scoped>
     #footer{
         position: fixed;
         bottom: 0;
@@ -45,7 +50,6 @@ export default {
         padding-top: 8px;
     }
     .footer-item{
-        width: 30%;
         text-align: center;
     }
     #footer .footer-item a{
@@ -59,7 +63,7 @@ export default {
         background-size: 25px auto;
     }
     #footer .footer-item:first-child i{
-        background-position: 0 -50px;
+        background-position: 0 -75px;
     }
     #footer .footer-item:nth-child(2) i{
         background-position: 0 -25px;
@@ -67,8 +71,19 @@ export default {
     #footer .footer-item:last-child i{
         background-position: 0 -125px;
     }
+    #footer .footer-item:first-child i.active{
+        background-position: 0 -50px;
+    }
+    #footer .footer-item:nth-child(2) i.active{
+        background-position: 0 0;
+    }
+    #footer .footer-item:last-child i.active{
+        background-position: 0 -100px;
+    }
     #footer .footer-item p{
         margin-bottom: 0;
-        margin-top: -3px;
+        margin-top: -5px;
+        font-size: 13px;
+        
     }
 </style>
