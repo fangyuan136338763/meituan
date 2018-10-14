@@ -6,30 +6,45 @@
                 <span>武汉市-湖北省</span>
                 <i class="mui-icon mui-icon-forward"></i>
             </router-link>
-            <a class="top-right">
+            <router-link class="top-right" to="/home/search">
                 <i class="mui-icon mui-icon-search"></i>
                 鸡排
-            </a>
+            </router-link>
         </div>
-        <a href="#" class="bg-img"><img src="../../public/img/index/bannertemp.e8a6fa63.jpg" alt=""></a>
+        <a href="#" class="bg-img"><img src="../../public/img/index/bannertemp.e8a6fa63.jpg"></a>
+        <tu-grid></tu-grid>
+        <div class="near-shops">
+            <p>—— 附近商家 ——</p>
+        </div>
+        <tu-list></tu-list>
         <tu-footer></tu-footer>
     </div>
 </template>
 
 <script>
+import Grid from '../components/Grid.vue'
+import List from '../components/List.vue'
 export default {
     data:function(){
         return {}
     },
     methods:{},
-    created(){}
+    created(){},
+    components:{
+        "tuGrid": Grid,
+        "tuList": List
+    }
 }
 </script>
 
 <style scoped>
+    .header-container .bg-img{
+        display: block;
+        height: 175px;
+    }
     .header-container .bg-img img{
         width: 100%;
-        
+        height: 100%;
     }
     .header-container{
         position:relative;
@@ -39,13 +54,13 @@ export default {
         display: flex;
         flex-flow: row nowrap;
         margin-top: 15px;
-        font-size: 15px;
+        font-size: 14px;
         width: 100%;
         justify-content: space-around;
     }
     .top-container .top-left{
         color: #fff;
-        background-color: rgba(0,0,0,.5);
+        background-color: rgba(0,0,0,.3);
         border-radius: 50px;
         line-height: 33px;
         padding: 0 5px;
@@ -66,5 +81,15 @@ export default {
     .top-container .top-right .mui-icon-search{
         font-size: 18px;
     }
-    
+    .near-shops{
+        text-align: center;
+        background: #fff;
+        padding-top: 30px;
+        margin-top: -10px;
+    }
+    .near-shops p{
+        font-size: 16px;
+        color: #333;
+        font-weight: bold;
+    }
 </style>

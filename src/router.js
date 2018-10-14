@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Order from './views/Order.vue'
 import Mine from './views/Mine.vue'
 import Location from './views/Location.vue'
+import Search from './views/Search.vue'
 
 Vue.use(Router)
 
@@ -19,6 +20,8 @@ export default new Router({
     {path: '/order',component: Order},
     {path: '/mine',component: Mine},
     {path: '/',redirect: '/home'},
-    {path: '/home/location',component: Location}
+    {path: '/home/location',component: Location},
+    {path: '/home/search',component: Search}
+    
   ]
 })
