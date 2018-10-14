@@ -5,6 +5,8 @@ import Order from './views/Order.vue'
 import Mine from './views/Mine.vue'
 import Location from './views/Location.vue'
 import Search from './views/Search.vue'
+import Classify from './views/Classify.vue'
+import Details from './views/Details.vue'
 
 Vue.use(Router)
 
@@ -21,7 +23,9 @@ export default new Router({
     {path: '/mine',component: Mine},
     {path: '/',redirect: '/home'},
     {path: '/home/location',component: Location},
-    {path: '/home/search',component: Search}
+    {path: '/home/search',component: Search},
+    {path: '/home/classify',component: Classify},
+    {path: '/details',component: Details}
     
   ]
 })

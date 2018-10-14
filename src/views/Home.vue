@@ -84,12 +84,13 @@ export default {
     .near-shops{
         text-align: center;
         background: #fff;
-        padding-top: 30px;
+        padding-top: 15px;
         margin-top: -10px;
     }
     .near-shops p{
         font-size: 16px;
         color: #333;
         font-weight: bold;
+        margin-bottom: 0;
     }
 </style>
