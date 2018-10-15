@@ -183,7 +183,7 @@ export default {
         color: #000;
     }
     .list-item-top-content .shops-comment{
-        font-size: 13px;
+        font-size: 12px;
         color: #656565;
     }
     .list-item-top-content .shops-comment .left{
@@ -258,7 +258,9 @@ export default {
         padding-left: 5px;
         text-overflow: ellipsis;
     }
-    
+    .list{
+        padding-bottom: 45px;
+    }
 
 
 </style>
