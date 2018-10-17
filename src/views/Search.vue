@@ -1,6 +1,10 @@
 <template>
     <div class="search-page">
-        <h1>搜索组件</h1>
+        <div>
+            <i></i>
+            <input type="text">
+            <span></span>
+        </div>
     </div>
 </template>
 

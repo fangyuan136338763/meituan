@@ -24,20 +24,56 @@
             </div>
             <div class="order-content">
                 <ul class="order">
-                    <li class="order-item">综合排序</li>
+                    <li class="order-item active">综合排序</li>
                     <li class="order-item">销量最高</li>
                     <li class="order-item">速度最快</li>
+                    <li class="order-item">评分最高</li>
+                    <li class="order-item">起送价最低</li>
+                    <li class="order-item">配送费最低</li>
                 </ul>
             </div>
+            <div class="filter-content">
+                <div>
+                    <p class="send">美团专送</p>
+                </div>
+                <div class="feature-content">
+                    <span class="title">商家特色(可多选)</span>
+                    <ul class="feature">
+                        <li>点评高分</li>
+                        <li>0元起送</li>
+                        <li>新商家</li>
+                        <li>品牌商家</li>
+                        <li>跨天预定</li>
+                    </ul>
+                </div>
+                <div class="discounts">
+                    <span>优惠活动(单选)</span>
+                    <p>
+                        <img src="../../public/img/index/c2c0f31d0ebf0f60af115d058169c492992.png">
+                        进店领劵
+                    </p>
+                    <p>
+                        <img src="../../public/img/index/652eea4034250563fe11b02e3219ba8d981.png">
+                        满返代金券
+                    </p>
+                </div>
+                <div class="bottom">
+                    <span>清除筛选</span>
+                    <span class="active">完成</span>
+                </div>
+            </div>
         </div>
+        <tu-list></tu-list>
     </div>
 </template>
 
 <script>
+import List from '../components/List.vue'
 export default {
     data: function(){
         return {}
     },
+    components: {"TuList": List},
     methods: {},
     created(){}
 }
@@ -119,7 +155,7 @@ export default {
         margin: 2%;
     }
     .order-content{
-        display: block;
+        display: none;
     }
     .order-content .order{
         list-style: none;
@@ -127,10 +163,92 @@ export default {
         padding: 0;
         font-size: 14px;
     }
+    .order-content .order .active{
+        color: #FFB000;
+    }
     .order .order-item{
         width: 100%;
         padding: 10px;
         padding-left: 20px;
         border-bottom: 1px solid #ddd;
+    }
+    .filter-content{
+        font-size: 14px;
+        display: none;
+    }
+    .filter-content p.send{
+        margin: 0;
+        padding: 0;
+        width: 103px;
+        height: 34px;
+        line-height: 34px;
+        border: 1px solid #ccc;
+        text-align: center;
+        margin: 15px 0 15px 15px;
+        font-size: 12px;
+        color: black;
+    }
+    .feature-content{
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 5px;
+    }
+    .feature-content .title{
+        margin-left: 15px;
+        font-size: 12px;
+        color: #999;
+    }
+    .feature-content .feature{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .feature-content .feature li{
+        width: 28%;
+        height: 34px;
+        line-height: 34px;
+        border: 1px solid #ccc;
+        text-align: center;
+        margin: 10px;
+        font-size: 12px;
+    }
+    .discounts{
+        padding-left: 15px;
+        padding-bottom: 10px;
+    }
+    .discounts span{
+        display: block;
+        font-size: 12px;
+        color: #999;
+        padding: 10px 0;
+    }
+    .discounts p{
+        font-size: 12px;
+        color: #000;
+    }
+    
+    .discounts p img{
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+    .filter-content .bottom{
+        display: flex;
+        flex-flow: row nowrap;
+    }
+    .filter-content .bottom span{
+        width: 50%;
+        height: 50px;
+        border: 1px solid #ccc;
+        text-align: center;
+        line-height: 50px;
+        font-size: 18px;
+        color: #2f2f2f;
+    }
+    .filter-content .bottom span.active{
+        background: #FFD161;
     }
 </style>
