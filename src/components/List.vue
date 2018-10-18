@@ -144,10 +144,21 @@
 <script>
 export default {
     data: function(){
-        return {}
+        return {
+            shops:[]
+        }
     },
-    methods:{},
-    created(){},
+    methods:{
+        getData: function(){
+            this.$http.get('/home').then(data=>{
+                console.log(data);
+                this.shops = data.data.shop;
+            });
+        }
+    },
+    created(){
+        this.getData();
+    },
 }
 </script>
 
