@@ -13,3 +13,10 @@ Mock.mock('/home',{
         'img': "@image('833x625',@color)"
     }]
 });
+
+Mock.mock('/home/location',{
+    'citys|26':[[{
+        'id|+1': 1,
+        'name': "@city()"
+    }]]
+});

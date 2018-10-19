@@ -1,7 +1,41 @@
 <template>
     <div class="list">
         <ul class="list-container">
-            <li class="list-item">
+            <li class="list-item" v-for="item in shops" :key="item.id">
+                <router-link to="/details">
+                    <div class="list-item-top">
+                        <img :src="item.img" class="shop-image">
+                        <div class="list-item-top-content">
+                            <h4 class="title">{{item.title}}</h4>
+                            <div class="shops-comment">
+                                <div class="left">
+                                    <ul class="star">
+                                        <li><i></i></li>
+                                        <li><i></i></li>
+                                        <li><i></i></li>
+                                        <li><i></i></li>
+                                        <li><i></i></li>
+                                    </ul>
+                                    <span class="sales-counts">月售{{item.sales}}+</span>
+                                </div>
+                                <div class="space-time"><span class="time">{{item.time}}min</span><span class="space">{{item.distance}}km</span></div>
+                            </div>
+                            <div class="send">
+                                <div class="send-price">
+                                    <span class="price">起送价￥{{item.send}}</span>
+                                    <span>配送￥{{item.price}}</span>
+                                </div>
+                                <span class="send-self" v-if="item.isMtSend">美团专送</span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="list-item-bottom">
+                        <img src="../../public/img/index/476ba65ee80b6385bab292c085baed17940.png"><span>本店支持开发票，开票金额50元起</span>
+                    </div>
+                </router-link>
+            </li>
+            <!-- <li class="list-item">
                 <router-link to="/details">
                     <div class="list-item-top">
                         <img src="../../public/img/index/64cc287151ab081a5749358005a8680b21921.jpg" class="shop-image">
@@ -102,41 +136,7 @@
                         <img src="../../public/img/index/476ba65ee80b6385bab292c085baed17940.png"><span>本店支持开发票，开票金额50元起</span>
                     </div>
                 </router-link>
-            </li>
-            <li class="list-item">
-                <router-link to="/details">
-                    <div class="list-item-top">
-                        <img src="../../public/img/index/64cc287151ab081a5749358005a8680b21921.jpg" class="shop-image">
-                        <div class="list-item-top-content">
-                            <h4 class="title">一㸃點（泛悦汇店）</h4>
-                            <div class="shops-comment">
-                                <div class="left">
-                                    <ul class="star">
-                                        <li><i></i></li>
-                                        <li><i></i></li>
-                                        <li><i></i></li>
-                                        <li><i></i></li>
-                                        <li><i></i></li>
-                                    </ul>
-                                    <span class="sales-counts">月售999+</span>
-                                </div>
-                                <div class="space-time"><span class="time">52min</span><span class="space">3.4km</span></div>
-                            </div>
-                            <div class="send">
-                                <div class="send-price">
-                                    <span class="price">起送价￥20</span>
-                                    <span>配送￥3.5</span>
-                                </div>
-                                <span class="send-self">美团专送</span>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="list-item-bottom">
-                        <img src="../../public/img/index/476ba65ee80b6385bab292c085baed17940.png"><span>本店支持开发票，开票金额50元起</span>
-                    </div>
-                </router-link>
-            </li>
+            </li> -->
         </ul>
     </div>
 </template>

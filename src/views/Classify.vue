@@ -1,7 +1,7 @@
 <template>
     <div class="classify">
         <div class="header">
-            <i class="mui-icon mui-icon-arrowleft"></i>
+            <i class="mui-icon mui-icon-arrowleft" @click="goBack()"></i>
             <h4 class="title">美食</h4>
         </div>
         <div class="classify-search">
@@ -74,7 +74,12 @@ export default {
         return {}
     },
     components: {"TuList": List},
-    methods: {},
+    methods: {
+        goBack: function(){
+            // this.$router.push('/home');
+            history.go(-1);
+        }
+    },
     created(){}
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
     <div class="location-page">
         <div class="header">
-            <a href="/">
+            <a href="/home">
                 <img src="../../public/img/index/logo.42591fec.png">
             </a>
             <h4 class="title">选择城市</h4>
@@ -24,10 +24,20 @@
 <script>
 export default {
     data: function(){
-        return {}
+        return {
+            cityIds: ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+        }
     },
-    methods:{},
-    created(){}
+    methods:{
+        getCitys: function(){
+            this.$http.get('/home/location').then(function(res){
+                console.log(res);
+            });
+        }
+    },
+    created(){
+        this.getCitys();
+    }
 }
 </script>
 
