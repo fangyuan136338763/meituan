@@ -15,8 +15,13 @@ Mock.mock('/home',{
 });
 
 Mock.mock('/home/location',{
-    'citys|26':[[{
+    'cityId_A|20-30':[{
         'id|+1': 1,
         'name': "@city()"
-    }]]
+    }],
+    'cityId_B|20-30': [{
+        'id|+1': 1,
+        'name': "@city()"
+    }]
+    
 });
