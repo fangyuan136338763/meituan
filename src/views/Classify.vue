@@ -1,7 +1,7 @@
 <template>
     <div class="classify">
         <div class="header">
-            <i class="mui-icon mui-icon-arrowleft" @click="goBack()"></i>
+            <img src="../../public/img/index/arrow.png" @click="goBack()">
             <h4 class="title">美食</h4>
         </div>
         <div class="classify-search">
@@ -93,6 +93,7 @@ export default {
         flex-flow: row nowrap;
         height: 44px;
         border-bottom: 1px solid #e4e4e4;
+        align-items: center;
     }
     .classify .header .mui-icon{
         width: 5%;

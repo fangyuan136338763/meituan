@@ -70,14 +70,13 @@ export default {
         flex-flow: row wrap;
         justify-content: space-around;
         background: #fff;
-        margin-top: 0;
         width: 100%;
-        padding-left: 0;
         padding-top: 20px;
         text-align: center;
     }
     .grid-container .grid-item{
         width: 25%;
+        margin-bottom: 20px;
     }
     .grid-container .grid-item img{
         width: 47px;
@@ -85,6 +84,8 @@ export default {
     }
     .grid-container .grid-item p{
         color: #2f2f2f;
+        font-size: 14px;
+        margin-top: 5px;
     }
 
 </style>

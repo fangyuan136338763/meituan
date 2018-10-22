@@ -1,7 +1,7 @@
 <template>
     <div class="search-page">
         <div class="header">
-            <i class="mui-icon mui-icon-arrowleft" @click="goBack()"></i>
+            <img src="../../public/img/index/arrow.png" @click="goBack()">
             <input type="text" class="search-input" placeholder="请输入商家或商品名称">
             <span class="search-btn">搜索</span>
         </div>

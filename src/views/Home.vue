@@ -2,12 +2,12 @@
     <div class="header-container">
         <div class="top-container">
             <router-link class="top-left" to="/home/location">
-                <i class="mui-icon mui-icon-location"></i>
+                <img src="../../public/img/index/icon-location.png">
                 <span>武汉市-湖北省</span>
                 <i class="mui-icon mui-icon-forward"></i>
             </router-link>
             <router-link class="top-right" to="/home/search">
-                <i class="mui-icon mui-icon-search"></i>
+                <img src="../../public/img/index/icon-search.png">
                 鸡排
             </router-link>
         </div>
@@ -59,15 +59,20 @@ export default {
         justify-content: space-around;
     }
     .top-container .top-left{
-        color: #fff;
         background-color: rgba(0,0,0,.3);
         border-radius: 50px;
         line-height: 33px;
         padding: 0 5px;
     }
-    .top-container .top-left .mui-icon-location,.mui-icon-forward{
-        font-size: 18px;
+    .top-left img{
+        width: 14px;
+        vertical-align: middle;
+        margin-right: 5px;
     }
+    .top-left span{
+        color: #fff;
+    }
+    
     .top-container .top-right{
         background-color: #fff;
         width: 169px;
@@ -78,8 +83,9 @@ export default {
         margin-top: 5px;
         color: black;
     }
-    .top-container .top-right .mui-icon-search{
-        font-size: 18px;
+    .top-container .top-right img{
+        width: 18px;
+        vertical-align: middle;
     }
     .near-shops{
         text-align: center;
@@ -91,6 +97,5 @@ export default {
         font-size: 16px;
         color: #333;
         font-weight: bold;
-        margin-bottom: 0;
     }
 </style>

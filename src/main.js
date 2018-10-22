@@ -6,9 +6,10 @@ import Footer from './components/Footer.vue'
 import Mock from './mock'
 import Axios from 'axios'
 
-import 'mint-ui/lib/style.css'
-import './lib/mui/css/mui.css'
-import './lib/mui/css/icons-extra.css'
+// import 'mint-ui/lib/style.css'
+// import './lib/mui/css/mui.css'
+// import './lib/mui/css/icons-extra.css'
+// import './assets/css/base.css'
 
 Vue.config.productionTip = false;
 Vue.prototype.$http = Axios;

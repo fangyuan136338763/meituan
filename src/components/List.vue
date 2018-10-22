@@ -18,7 +18,10 @@
                                     </ul>
                                     <span class="sales-counts">月售{{item.sales}}+</span>
                                 </div>
-                                <div class="space-time"><span class="time">{{item.time}}min</span><span class="space">{{item.distance}}km</span></div>
+                                <div class="space-time">
+                                    <span class="time">{{item.time}}min</span>
+                                    <span class="space">{{item.distance}}km</span>
+                                </div>
                             </div>
                             <div class="send">
                                 <div class="send-price">
@@ -35,108 +38,6 @@
                     </div>
                 </router-link>
             </li>
-            <!-- <li class="list-item">
-                <router-link to="/details">
-                    <div class="list-item-top">
-                        <img src="../../public/img/index/64cc287151ab081a5749358005a8680b21921.jpg" class="shop-image">
-                        <div class="list-item-top-content">
-                            <h4 class="title">一㸃點（泛悦汇店）</h4>
-                            <div class="shops-comment">
-                                <div class="left">
-                                    <ul class="star">
-                                        <li><i></i></li>
-                                        <li><i></i></li>
-                                        <li><i></i></li>
-                                        <li><i></i></li>
-                                        <li><i></i></li>
-                                    </ul>
-                                    <span class="sales-counts">月售999+</span>
-                                </div>
-                                <div class="space-time"><span class="time">52min</span><span class="space">3.4km</span></div>
-                            </div>
-                            <div class="send">
-                                <div class="send-price">
-                                    <span class="price">起送价￥20</span>
-                                    <span>配送￥3.5</span>
-                                </div>
-                                <span class="send-self">美团专送</span>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="list-item-bottom">
-                        <img src="../../public/img/index/476ba65ee80b6385bab292c085baed17940.png"><span>本店支持开发票，开票金额50元起</span>
-                    </div>
-                </router-link>
-            </li>
-            <li class="list-item">
-                <router-link to="/details">
-                    <div class="list-item-top">
-                        <img src="../../public/img/index/64cc287151ab081a5749358005a8680b21921.jpg" class="shop-image">
-                        <div class="list-item-top-content">
-                            <h4 class="title">一㸃點（泛悦汇店）</h4>
-                            <div class="shops-comment">
-                                <div class="left">
-                                    <ul class="star">
-                                        <li><i></i></li>
-                                        <li><i></i></li>
-                                        <li><i></i></li>
-                                        <li><i></i></li>
-                                        <li><i></i></li>
-                                    </ul>
-                                    <span class="sales-counts">月售999+</span>
-                                </div>
-                                <div class="space-time"><span class="time">52min</span><span class="space">3.4km</span></div>
-                            </div>
-                            <div class="send">
-                                <div class="send-price">
-                                    <span class="price">起送价￥20</span>
-                                    <span>配送￥3.5</span>
-                                </div>
-                                <span class="send-self">美团专送</span>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="list-item-bottom">
-                        <img src="../../public/img/index/476ba65ee80b6385bab292c085baed17940.png"><span>本店支持开发票，开票金额50元起</span>
-                    </div>
-                </router-link>
-            </li>
-            <li class="list-item">
-                <router-link to="/details">
-                    <div class="list-item-top">
-                        <img src="../../public/img/index/64cc287151ab081a5749358005a8680b21921.jpg" class="shop-image">
-                        <div class="list-item-top-content">
-                            <h4 class="title">一㸃點（泛悦汇店）</h4>
-                            <div class="shops-comment">
-                                <div class="left">
-                                    <ul class="star">
-                                        <li><i></i></li>
-                                        <li><i></i></li>
-                                        <li><i></i></li>
-                                        <li><i></i></li>
-                                        <li><i></i></li>
-                                    </ul>
-                                    <span class="sales-counts">月售999+</span>
-                                </div>
-                                <div class="space-time"><span class="time">52min</span><span class="space">3.4km</span></div>
-                            </div>
-                            <div class="send">
-                                <div class="send-price">
-                                    <span class="price">起送价￥20</span>
-                                    <span>配送￥3.5</span>
-                                </div>
-                                <span class="send-self">美团专送</span>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="list-item-bottom">
-                        <img src="../../public/img/index/476ba65ee80b6385bab292c085baed17940.png"><span>本店支持开发票，开票金额50元起</span>
-                    </div>
-                </router-link>
-            </li> -->
         </ul>
     </div>
 </template>
@@ -164,9 +65,7 @@ export default {
 
 <style scoped>
     .list-container{
-        list-style: none;
         background: #fff;
-        margin: 0;
         padding: 10px 0;
     }
     .list-container .list-item{
@@ -194,25 +93,26 @@ export default {
         color: #000;
     }
     .list-item-top-content .shops-comment{
-        font-size: 12px;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        padding: 5px 0;
+    }
+    .list-item-top-content .shops-comment .left .sales-counts{
+        font-size: 10px;
         color: #656565;
     }
-    .list-item-top-content .shops-comment .left{
-        float: left;
-    }
-    .list-item-top-content .shops-comment .space-time{
-        float: right;
+    .list-item-top-content .shops-comment .space-time span{
+        font-size: 10px;
+        color: #656565;
     }
     .list-item-top-content .shops-comment .star{
-        list-style: none;
         float: left;
-        padding: 0;
-        margin: 5px 0 0;
-        
+        margin-top: 5px;
     }
     .list-item-top-content .shops-comment .star li{
         float: left;
-        padding: 0 3px;
+        padding: 0 2px;
     }
     .list-item-top-content .shops-comment .star li i{
         width: 10px;
@@ -222,7 +122,6 @@ export default {
         background-size: cover;
     }
     .list-item-top-content .shops-comment .sales-counts{
-        float: right;
         padding-left: 10px;
     }
     .space-time .space::before{
@@ -230,12 +129,15 @@ export default {
         display: inline-block;
         border-right: 1px solid #ddd;
         height: 8px;
-        margin: 0 10px;
+        margin: 0 5px;
         margin-bottom: 3px;
     }
-    .list-item-top-content .send-price{
-        float: left;
-        font-size: 13px;
+    .send{
+        display: flex;
+        justify-content: space-between;
+    }
+    .send span{
+        font-size: 10px;
         color: #656565;
     }
     .list-item-top-content .send-price .price::after{
@@ -246,10 +148,9 @@ export default {
         margin: 0 10px;
     }
     span.send-self{
-        float: right;
         font-size: 12px;
-        background: orange;
-        padding: 0 5px;
+        background: #FFD161;
+        padding: 0 3px;
         border-top-left-radius: 8px;
         border-bottom-right-radius: 8px;
         color: #000;
