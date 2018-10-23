@@ -45,8 +45,9 @@ export default {
         height: 44px;
         justify-content: space-around;
     }
-    .header i{
-        font-size: 30px;
+    .header img{
+        width: 24px;
+        height: 25px;
     }
     .header input.search-input{
         margin: 0;

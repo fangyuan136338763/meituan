@@ -95,10 +95,10 @@ export default {
         border-bottom: 1px solid #e4e4e4;
         align-items: center;
     }
-    .classify .header .mui-icon{
-        width: 5%;
-        line-height: 44px;
-        margin-left: 8px;
+    .classify .header img{
+        width: 24px;
+        height: 25px;
+        margin-left: 5px;
     }
     .classify .header .title{
         width: 95%;
