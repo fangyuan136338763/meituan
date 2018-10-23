@@ -24,10 +24,25 @@
                     <li><div><span>爆款推荐</span></div></li>
                     <li><div><span>新品推荐</span></div></li>
                     <li><div><span>精品小炒</span></div></li>
+                    <li><div><span>爆款推荐</span></div></li>
+                    <li><div><span>新品推荐</span></div></li>
+                    <li><div><span>精品小炒</span></div></li>
                 </ul>
                 <div class="right">
                     <h5 class="right-title">热销</h5>
                     <ul class="product-list">
+                        <li class="list-item">
+                            <img src="../../public/img/index/3bfda051b23751a32bc1003333abbad432768.jpg" class="product-img">
+                            <div class="list-content">
+                                <h6 class="product-title">东北有机大米</h6>
+                                <span class="details">精选东北有机大米（米饭单点）单点米饭不配送</span>
+                                <span class="zan">赞86</span>
+                                <div class="bottom">
+                                    <span class="price">￥2.5</span>
+                                    <img src="../../public/img/index/icon-add.png" class="img-add">
+                                </div>
+                            </div>
+                        </li>
                         <li class="list-item">
                             <img src="../../public/img/index/3bfda051b23751a32bc1003333abbad432768.jpg" class="product-img">
                             <div class="list-content">
@@ -98,6 +113,12 @@ export default {
 </script>
 
 <style scoped>
+    .details-header{
+        position: fixed;
+        top: 0;
+        background-color: #fff;
+        width: 100%;
+    }
     .details-header .top{
         display: flex;
         height: 44px;
@@ -141,8 +162,10 @@ export default {
         display: flex;
 
     }
+    .details-content{
+        padding-top: 88px;
+    }
     .details-content .menu .left{
-        /* width: 85px; */
         margin-right: 10px;
     }
     .details-content .menu .left li{
