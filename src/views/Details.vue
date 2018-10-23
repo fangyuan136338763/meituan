@@ -52,6 +52,18 @@
                                 </div>
                             </div>
                         </li>
+                        <li class="list-item">
+                            <img src="../../public/img/index/3bfda051b23751a32bc1003333abbad432768.jpg" class="product-img">
+                            <div class="list-content">
+                                <h6 class="product-title">东北有机大米</h6>
+                                <span class="details">精选东北有机大米（米饭单点）单点米饭不配送</span>
+                                <span class="zan">赞86</span>
+                                <div class="bottom">
+                                    <span class="price">￥2.5</span>
+                                    <img src="../../public/img/index/icon-add.png" class="img-add">
+                                </div>
+                            </div>
+                        </li>
                         
                     </ul>
                 </div>
