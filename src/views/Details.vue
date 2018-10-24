@@ -2,7 +2,7 @@
     <div class="details-container">
         <div class="details-header">
             <div class="top">
-                <img src="../../public/img/index/arrow.png">
+                <img src="../../public/img/index/arrow.png" @click="goBack">
                 <h3 class="title">谢先生餐厅（乐都汇店）</h3>
             </div>
             <ul class="selector">
@@ -107,7 +107,11 @@ export default {
     data: function(){
         return {}
     },
-    methods: {},
+    methods: {
+        goBack: function(){
+            history.go(-1);
+        }
+    },
     created(){}
 }
 </script>
@@ -160,6 +164,7 @@ export default {
     }
     .menu{
         display: flex;
+        /* position: relative; */
 
     }
     .details-content{
@@ -167,6 +172,8 @@ export default {
     }
     .details-content .menu .left{
         margin-right: 10px;
+        position: fixed;
+        overflow-y: scroll;
     }
     .details-content .menu .left li{
         width: 85px;
@@ -191,6 +198,7 @@ export default {
     }
     .right{
         width: 100%;
+        padding-left: 90px;
     }
     .right-title{
         height: 36px;
