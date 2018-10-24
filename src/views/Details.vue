@@ -13,21 +13,26 @@
         </div>
         <div class="details-content">
             <div class="menu">
-                <ul class="left">
-                    <li><div><span>热销</span></div></li>
-                    <li><div><span>米饭必点！！！</span></div></li>
-                    <li><div><span>新品</span></div></li>
-                    <li class="active"><div><span>爆款推荐</span></div></li>
-                    <li><div><span>新品推荐</span></div></li>
-                    <li><div><span>精品小炒</span></div></li>
-                    <li><div><span>新品</span></div></li>
-                    <li><div><span>爆款推荐</span></div></li>
-                    <li><div><span>新品推荐</span></div></li>
-                    <li><div><span>精品小炒</span></div></li>
-                    <li><div><span>爆款推荐</span></div></li>
-                    <li><div><span>新品推荐</span></div></li>
-                    <li><div><span>精品小炒</span></div></li>
-                </ul>
+                <div class="left">
+                    <ul class="left-menu">
+                        <li><div><span>热销</span></div></li>
+                        <li><div><span>米饭必点！！！</span></div></li>
+                        <li><div><span>新品</span></div></li>
+                        <li class="active"><div><span>爆款推荐</span></div></li>
+                        <li><div><span>新品推荐</span></div></li>
+                        <li><div><span>精品小炒</span></div></li>
+                        <li><div><span>新品</span></div></li>
+                        <li><div><span>爆款推荐</span></div></li>
+                        <li><div><span>新品推荐</span></div></li>
+                        <li><div><span>精品小炒</span></div></li>
+                        <li><div><span>爆款推荐</span></div></li>
+                        <li><div><span>新品推荐</span></div></li>
+                        <li><div><span>精品小炒</span></div></li>
+                        <li><div><span>爆款推荐</span></div></li>
+                        <li><div><span>新品推荐</span></div></li>
+                        <li><div><span>精品小炒</span></div></li>
+                    </ul>
+                </div>
                 <div class="right">
                     <h5 class="right-title">热销</h5>
                     <ul class="product-list">
@@ -96,8 +101,10 @@
                 </div>
             </div>
         </div>
-        <div class="comment">
+        <div class="comment-content">
+            <div class="comment">
 
+            </div>
         </div>
     </div>
 </template>
@@ -162,18 +169,21 @@ export default {
     .selector-item span.active{
         border-bottom: 4px solid #fc6;
     }
-    .menu{
+    /* .menu{
         display: flex;
-        /* position: relative; */
+        position: relative;
 
-    }
+    } */
     .details-content{
         padding-top: 88px;
     }
     .details-content .menu .left{
         margin-right: 10px;
         position: fixed;
-        overflow-y: scroll;
+        overflow: auto;
+    }
+    .left-menu{
+        height: 800px;
     }
     .details-content .menu .left li{
         width: 85px;
