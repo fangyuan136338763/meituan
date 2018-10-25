@@ -6,11 +6,20 @@
         </div>
         <div class="classify-search">
             <ul class="classify-search-select">
-                <li class="classify-search-item">美食<i class="mui-icon mui-icon-arrowdown"></i></li>
-                <li class="classify-search-item">综合排序<i class="mui-icon mui-icon-arrowdown"></i></li>
-                <li class="classify-search-item">筛选<i class="mui-icon-extra mui-icon-extra-filter"></i></li>
+                <li class="classify-search-item" @click="selectTab($event)" data-toggle="content1">
+                    美食
+                    <img src="../../public/img/icon/down-arrow.png">
+                </li>
+                <li class="classify-search-item"  @click="selectTab($event)" data-toggle="content2">
+                    综合排序
+                    <img src="../../public/img/icon/down-arrow.png">
+                </li>
+                <li class="classify-search-item"  @click="selectTab($event)" data-toggle="content3">
+                    筛选
+                    <img src="../../public/img/icon/filter.png" class="icon-filter">
+                </li>
             </ul>
-            <div class="classify-content">
+            <div class="classify-content" id="content1">
                 <div class="content-item">
                     <h5 class="content-header">美食<span class="count">1806</span></h5>
                     <ul class="content-list">
@@ -22,7 +31,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="order-content">
+            <div class="order-content" id="content2">
                 <ul class="order">
                     <li class="order-item active">综合排序</li>
                     <li class="order-item">销量最高</li>
@@ -32,7 +41,7 @@
                     <li class="order-item">配送费最低</li>
                 </ul>
             </div>
-            <div class="filter-content">
+            <div class="filter-content" id="content3">
                 <div>
                     <p class="send">美团专送</p>
                 </div>
@@ -71,13 +80,23 @@
 import List from '../components/List.vue'
 export default {
     data: function(){
-        return {}
+        return {
+            selected: 0
+        }
     },
     components: {"TuList": List},
     methods: {
         goBack: function(){
             // this.$router.push('/home');
             history.go(-1);
+        },
+        selectTab: function(e){
+            // console.log(e.target.dataset.toggle);
+            // console.log(e.target.getAttribute("data-toggle"));
+            var id = e.target.dataset.toggle;
+            var elem = document.getElementById(id);
+            elem.style.display = "block";
+            
         }
     },
     created(){}
@@ -106,9 +125,8 @@ export default {
         padding-right: 5%;
         line-height: 33px;
     }
-    .classify-search li i{
-        font-size: 14px;
-        padding-left: 3px;
+    .classify-search li img{
+        vertical-align: middle;
     }
     .classify-search-select{
         display: flex;
@@ -126,8 +144,11 @@ export default {
         border-left: 1px solid #e4e4e4;
         border-right: 1px solid #e4e4e4;
     }
+    
     .classify-content{
         display: none;
+        position: absolute;
+        background: #fff;
     }
     .content-header{
         background: #efefef;
@@ -161,7 +182,10 @@ export default {
         margin: 2%;
     }
     .order-content{
-        display: none;
+        width: 100%;
+        /* display: none; */
+        position: absolute;
+        background: #fff;
     }
     .order-content .order{
         list-style: none;
@@ -181,6 +205,8 @@ export default {
     .filter-content{
         font-size: 14px;
         display: none;
+        position: absolute;
+
     }
     .filter-content p.send{
         margin: 0;

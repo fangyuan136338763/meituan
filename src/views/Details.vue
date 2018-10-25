@@ -14,28 +14,55 @@
         <div class="details-content">
             <div class="menu">
                 <div class="left">
-                    <ul class="left-menu">
-                        <li><div><span>热销</span></div></li>
-                        <li><div><span>米饭必点！！！</span></div></li>
-                        <li><div><span>新品</span></div></li>
-                        <li class="active"><div><span>爆款推荐</span></div></li>
-                        <li><div><span>新品推荐</span></div></li>
-                        <li><div><span>精品小炒</span></div></li>
-                        <li><div><span>新品</span></div></li>
-                        <li><div><span>爆款推荐</span></div></li>
-                        <li><div><span>新品推荐</span></div></li>
-                        <li><div><span>精品小炒</span></div></li>
-                        <li><div><span>爆款推荐</span></div></li>
-                        <li><div><span>新品推荐</span></div></li>
-                        <li><div><span>精品小炒</span></div></li>
-                        <li><div><span>爆款推荐</span></div></li>
-                        <li><div><span>新品推荐</span></div></li>
-                        <li><div><span>精品小炒</span></div></li>
-                    </ul>
+                    <div class="middle">
+
+                        <ul class="left-menu">
+                            <li><div><span>热销</span></div></li>
+                            <li><div><span>米饭必点！！！</span></div></li>
+                            <li><div><span>新品</span></div></li>
+                            <li class="active"><div><span>爆款推荐</span></div></li>
+                            <li><div><span>新品推荐</span></div></li>
+                            <li><div><span>精品小炒</span></div></li>
+                            <li><div><span>新品</span></div></li>
+                            <li><div><span>爆款推荐</span></div></li>
+                            <li><div><span>新品推荐</span></div></li>
+                            <li><div><span>精品小炒</span></div></li>
+                            <li><div><span>爆款推荐</span></div></li>
+                            <li><div><span>新品推荐</span></div></li>
+                            <li><div><span>精品小炒</span></div></li>
+                            <li><div><span>爆款推荐</span></div></li>
+                            <li><div><span>新品推荐</span></div></li>
+                            <li><div><span>精品小炒</span></div></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="right">
                     <h5 class="right-title">热销</h5>
                     <ul class="product-list">
+                        <li class="list-item">
+                            <img src="../../public/img/index/3bfda051b23751a32bc1003333abbad432768.jpg" class="product-img">
+                            <div class="list-content">
+                                <h6 class="product-title">东北有机大米</h6>
+                                <span class="details">精选东北有机大米（米饭单点）单点米饭不配送</span>
+                                <span class="zan">赞86</span>
+                                <div class="bottom">
+                                    <span class="price">￥2.5</span>
+                                    <img src="../../public/img/index/icon-add.png" class="img-add">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <img src="../../public/img/index/3bfda051b23751a32bc1003333abbad432768.jpg" class="product-img">
+                            <div class="list-content">
+                                <h6 class="product-title">东北有机大米</h6>
+                                <span class="details">精选东北有机大米（米饭单点）单点米饭不配送</span>
+                                <span class="zan">赞86</span>
+                                <div class="bottom">
+                                    <span class="price">￥2.5</span>
+                                    <img src="../../public/img/index/icon-add.png" class="img-add">
+                                </div>
+                            </div>
+                        </li>
                         <li class="list-item">
                             <img src="../../public/img/index/3bfda051b23751a32bc1003333abbad432768.jpg" class="product-img">
                             <div class="list-content">
@@ -178,9 +205,16 @@ export default {
         padding-top: 88px;
     }
     .details-content .menu .left{
-        margin-right: 10px;
+        /* padding-right: 20px; */
         position: fixed;
-        overflow: auto;
+        overflow: hidden;
+        width: 90px;
+    }
+    .middle{
+        overflow-y: scroll;
+        padding-right: 20px;
+        width: 100px;
+
     }
     .left-menu{
         height: 800px;
@@ -207,8 +241,7 @@ export default {
         text-align: center;
     }
     .right{
-        width: 100%;
-        padding-left: 90px;
+        margin-left: 90px;
     }
     .right-title{
         height: 36px;
