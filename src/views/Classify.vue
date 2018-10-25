@@ -6,20 +6,20 @@
         </div>
         <div class="classify-search">
             <ul class="classify-search-select">
-                <li class="classify-search-item" @click="selectTab($event)" data-toggle="content1">
+                <li class="classify-search-item" @click.self="selectTab($event)" data-index="1">
                     美食
                     <img src="../../public/img/icon/down-arrow.png">
                 </li>
-                <li class="classify-search-item"  @click="selectTab($event)" data-toggle="content2">
+                <li class="classify-search-item"  @click.self="selectTab($event)" data-index="2">
                     综合排序
                     <img src="../../public/img/icon/down-arrow.png">
                 </li>
-                <li class="classify-search-item"  @click="selectTab($event)" data-toggle="content3">
+                <li class="classify-search-item"  @click.self="selectTab($event)" data-index="3">
                     筛选
                     <img src="../../public/img/icon/filter.png" class="icon-filter">
                 </li>
             </ul>
-            <div class="classify-content" id="content1">
+            <div class="classify-content" v-if="selected==1">
                 <div class="content-item">
                     <h5 class="content-header">美食<span class="count">1806</span></h5>
                     <ul class="content-list">
@@ -31,7 +31,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="order-content" id="content2">
+            <div class="order-content" v-if="selected==2">
                 <ul class="order">
                     <li class="order-item active">综合排序</li>
                     <li class="order-item">销量最高</li>
@@ -41,7 +41,7 @@
                     <li class="order-item">配送费最低</li>
                 </ul>
             </div>
-            <div class="filter-content" id="content3">
+            <div class="filter-content" v-if="selected==3">
                 <div>
                     <p class="send">美团专送</p>
                 </div>
@@ -91,13 +91,12 @@ export default {
             history.go(-1);
         },
         selectTab: function(e){
-            // console.log(e.target.dataset.toggle);
-            // console.log(e.target.getAttribute("data-toggle"));
-            var id = e.target.dataset.toggle;
-            var elem = document.getElementById(id);
-            elem.style.display = "block";
-            
-        }
+            if(this.selected == e.target.getAttribute("data-index")){
+                this.selected  = 0;
+            }else{
+                this.selected = e.target.getAttribute("data-index");
+            }
+        },
     },
     created(){}
 }
@@ -146,7 +145,7 @@ export default {
     }
     
     .classify-content{
-        display: none;
+        width: 100%;
         position: absolute;
         background: #fff;
     }
@@ -183,7 +182,6 @@ export default {
     }
     .order-content{
         width: 100%;
-        /* display: none; */
         position: absolute;
         background: #fff;
     }
@@ -203,9 +201,10 @@ export default {
         border-bottom: 1px solid #ddd;
     }
     .filter-content{
+        width: 100%;
         font-size: 14px;
-        display: none;
         position: absolute;
+        background: #fff;
 
     }
     .filter-content p.send{
@@ -226,7 +225,7 @@ export default {
     }
     .feature-content .title{
         margin-left: 15px;
-        font-size: 12px;
+        /* font-size: 12px; */
         color: #999;
     }
     .feature-content .feature{
@@ -243,7 +242,7 @@ export default {
         border: 1px solid #ccc;
         text-align: center;
         margin: 10px;
-        font-size: 12px;
+        /* font-size: 12px; */
     }
     .discounts{
         padding-left: 15px;
@@ -251,13 +250,14 @@ export default {
     }
     .discounts span{
         display: block;
-        font-size: 12px;
+        /* font-size: 12px; */
         color: #999;
         padding: 10px 0;
     }
     .discounts p{
-        font-size: 12px;
+        /* font-size: 12px; */
         color: #000;
+        margin-bottom: 10px;
     }
     
     .discounts p img{
