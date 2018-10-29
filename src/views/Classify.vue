@@ -97,8 +97,13 @@ export default {
                 this.selected = e.target.getAttribute("data-index");
             }
         },
+        getClassifyId(){
+            console.log(this.$route.params);
+        }
     },
-    created(){}
+    created(){
+        this.getClassifyId();
+    }
 }
 </script>
 

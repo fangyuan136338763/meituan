@@ -2,7 +2,7 @@
     <div class="grid">
         <ul class="grid-container">
             <li class="grid-item" v-for="(item,i) in menuList" :key="i">
-                <router-link :to="'/home/classify?id='+item.id">
+                <router-link :to="'/home/classify/'+item.id">
                     <img :src="item.img_url">
                     <p>{{item.title}}</p>
                 </router-link>

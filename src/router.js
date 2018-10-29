@@ -24,7 +24,7 @@ export default new Router({
     {path: '/',redirect: '/home'},
     {path: '/home/location',component: Location},
     {path: '/home/search',component: Search},
-    {path: '/home/classify',component: Classify},
+    {path: '/home/classify/:id',component: Classify},
     {path: '/details',component: Details}
     
   ]
