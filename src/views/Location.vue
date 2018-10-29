@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     getCitys: function() {
-      this.$http.get("/home/location").then(res => {
+      this.$http.get("http://localhost:5050/home/location").then(res => {
         console.log(res);
         for (var key in res.data) {
           this.citys.push(res.data[key]);

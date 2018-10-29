@@ -51,8 +51,8 @@ export default {
     },
     methods:{
         getData: function(){
-            this.$http.get('/home').then(data=>{
-                console.log(data);
+            this.$http.get('http://localhost:5050/home').then(data=>{
+                // console.log(data);
                 this.shops = data.data.shop;
             });
         }
