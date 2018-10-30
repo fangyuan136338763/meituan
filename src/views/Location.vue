@@ -12,9 +12,6 @@
                 <div class="id">{{item[0].cId}}</div>
                 <ul class="city-item" v-for="city in item" :key="city.id">
                     <li><a href="#" class="city">{{city.name}}</a></li>
-                    <!-- <li><a href="#" class="city">阿巴嘎旗</a></li>
-                    <li><a href="#" class="city">阿巴嘎旗</a></li>
-                    <li><a href="#" class="city">阿巴嘎旗</a></li> -->
                 </ul>
             </div>
         </div>

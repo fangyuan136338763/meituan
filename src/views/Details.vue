@@ -11,7 +11,8 @@
                 <li class="selector-item"><span>商家</span></li>
             </ul>
         </div>
-        <div class="details-content">
+        <details-content></details-content>
+        <!-- <div class="details-content">
             <div class="menu">
                 <div class="left">
                     <div class="middle">
@@ -116,22 +117,23 @@
             <div class="comment">
 
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
 <script>
+import DetailsContent from '../components/Details/DetailsContent.vue'
 export default {
     data: function(){
         return {
-            menus: [],
-            selected: 0
+            // menus: [],
+            // selected: 0
         }
     },
     methods: {
         goBack: function(){
             history.go(-1);
-        },
+        }/* ,
         getData: function(){
             this.$http.get('http://localhost:5050/details').then((res)=>{
                 console.log(res);
@@ -140,10 +142,13 @@ export default {
         },
         choose: function(i){
             this.selected = i;
-        }
+        } */
     },
     created(){
-        this.getData();
+        // this.getData();
+    },
+    components: {
+        "details-content": DetailsContent
     }
 }
 </script>
@@ -194,7 +199,7 @@ export default {
     .selector-item span.active{
         border-bottom: 4px solid #fc6;
     }
-    .details-content{
+    /* .details-content{
         padding-top: 88px;
     }
     .details-content .menu .left{
@@ -204,7 +209,6 @@ export default {
         left: 0px;
         overflow: hidden;
         width: 90px;
-        /* background: red; */
     }
     .middle{
         position: absolute;
@@ -214,7 +218,6 @@ export default {
         overflow-y: scroll;
         padding-right: 20px;
         width: 100px;
-        /* background: yellow; */
     }
     .details-content .menu .left li{
         width: 85px;
@@ -292,6 +295,6 @@ export default {
         width: 24px;
         height: 25px;
         border-radius: 50%;
-    }
+    } */
     
 </style>
