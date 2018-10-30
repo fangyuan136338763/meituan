@@ -15,24 +15,8 @@
             <div class="menu">
                 <div class="left">
                     <div class="middle">
-
-                        <ul class="left-menu">
-                            <li><div><span>热销</span></div></li>
-                            <li><div><span>米饭必点！！！</span></div></li>
-                            <li><div><span>新品</span></div></li>
-                            <li class="active"><div><span>爆款推荐</span></div></li>
-                            <li><div><span>新品推荐</span></div></li>
-                            <li><div><span>精品小炒</span></div></li>
-                            <li><div><span>新品</span></div></li>
-                            <li><div><span>爆款推荐</span></div></li>
-                            <li><div><span>新品推荐</span></div></li>
-                            <li><div><span>精品小炒</span></div></li>
-                            <li><div><span>爆款推荐</span></div></li>
-                            <li><div><span>新品推荐</span></div></li>
-                            <li><div><span>精品小炒</span></div></li>
-                            <li><div><span>爆款推荐</span></div></li>
-                            <li><div><span>新品推荐</span></div></li>
-                            <li><div><span>精品小炒</span></div></li>
+                        <ul class="left-menu" :style="'height:'+menus.length*61+'px'">
+                            <li v-for="(item,i) in menus" :key="i" @click="choose(i)" :class="selected==i?'active':''"><div><span>{{item.title}}</span></div></li>
                         </ul>
                     </div>
                 </div>
@@ -139,14 +123,28 @@
 <script>
 export default {
     data: function(){
-        return {}
+        return {
+            menus: [],
+            selected: 0
+        }
     },
     methods: {
         goBack: function(){
             history.go(-1);
+        },
+        getData: function(){
+            this.$http.get('http://localhost:5050/details').then((res)=>{
+                console.log(res);
+                this.menus = res.data.menus;
+            });
+        },
+        choose: function(i){
+            this.selected = i;
         }
     },
-    created(){}
+    created(){
+        this.getData();
+    }
 }
 </script>
 
@@ -196,28 +194,27 @@ export default {
     .selector-item span.active{
         border-bottom: 4px solid #fc6;
     }
-    /* .menu{
-        display: flex;
-        position: relative;
-
-    } */
     .details-content{
         padding-top: 88px;
     }
     .details-content .menu .left{
-        /* padding-right: 20px; */
         position: fixed;
+        top: 87px;
+        bottom: 0px;
+        left: 0px;
         overflow: hidden;
         width: 90px;
+        /* background: red; */
     }
     .middle{
+        position: absolute;
+        top: 0;
+        bottom: 0px;
+        left: 0px;
         overflow-y: scroll;
         padding-right: 20px;
         width: 100px;
-
-    }
-    .left-menu{
-        height: 800px;
+        /* background: yellow; */
     }
     .details-content .menu .left li{
         width: 85px;

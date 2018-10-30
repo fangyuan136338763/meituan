@@ -43,4 +43,9 @@ Mock.mock('http://localhost:5050/home/location',{
     }]
     
 });
-
+Mock.mock('http://localhost:5050/details',{
+    'menus|20-25': [{
+        'id|+1': 1,
+        'title': "@ctitle(2,4)"
+    }]
+});
