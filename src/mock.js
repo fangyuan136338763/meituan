@@ -44,8 +44,17 @@ Mock.mock('http://localhost:5050/home/location',{
     
 });
 Mock.mock('http://localhost:5050/details',{
-    'menus|20-25': [{
+    'menus|20': [{
         'id|+1': 1,
         'title': "@ctitle(2,4)"
-    }]
+    }],
+    'contents|5-10': [{
+        'id|+1': 1,
+        'title': "@ctitle(4,6)",
+        'details': "@ctitle(20,30)",
+        'zan|100-200': 100,
+        'price|1-100.1': 1,
+        'img': "@image(500x375,@color)"
+    }],
+
 });

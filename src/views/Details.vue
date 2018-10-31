@@ -11,113 +11,7 @@
                 <li class="selector-item"><span>商家</span></li>
             </ul>
         </div>
-        <details-content></details-content>
-        <!-- <div class="details-content">
-            <div class="menu">
-                <div class="left">
-                    <div class="middle">
-                        <ul class="left-menu" :style="'height:'+menus.length*61+'px'">
-                            <li v-for="(item,i) in menus" :key="i" @click="choose(i)" :class="selected==i?'active':''"><div><span>{{item.title}}</span></div></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="right">
-                    <h5 class="right-title">热销</h5>
-                    <ul class="product-list">
-                        <li class="list-item">
-                            <img src="../../public/img/index/3bfda051b23751a32bc1003333abbad432768.jpg" class="product-img">
-                            <div class="list-content">
-                                <h6 class="product-title">东北有机大米</h6>
-                                <span class="details">精选东北有机大米（米饭单点）单点米饭不配送</span>
-                                <span class="zan">赞86</span>
-                                <div class="bottom">
-                                    <span class="price">￥2.5</span>
-                                    <img src="../../public/img/index/icon-add.png" class="img-add">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-item">
-                            <img src="../../public/img/index/3bfda051b23751a32bc1003333abbad432768.jpg" class="product-img">
-                            <div class="list-content">
-                                <h6 class="product-title">东北有机大米</h6>
-                                <span class="details">精选东北有机大米（米饭单点）单点米饭不配送</span>
-                                <span class="zan">赞86</span>
-                                <div class="bottom">
-                                    <span class="price">￥2.5</span>
-                                    <img src="../../public/img/index/icon-add.png" class="img-add">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-item">
-                            <img src="../../public/img/index/3bfda051b23751a32bc1003333abbad432768.jpg" class="product-img">
-                            <div class="list-content">
-                                <h6 class="product-title">东北有机大米</h6>
-                                <span class="details">精选东北有机大米（米饭单点）单点米饭不配送</span>
-                                <span class="zan">赞86</span>
-                                <div class="bottom">
-                                    <span class="price">￥2.5</span>
-                                    <img src="../../public/img/index/icon-add.png" class="img-add">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-item">
-                            <img src="../../public/img/index/3bfda051b23751a32bc1003333abbad432768.jpg" class="product-img">
-                            <div class="list-content">
-                                <h6 class="product-title">东北有机大米</h6>
-                                <span class="details">精选东北有机大米（米饭单点）单点米饭不配送</span>
-                                <span class="zan">赞86</span>
-                                <div class="bottom">
-                                    <span class="price">￥2.5</span>
-                                    <img src="../../public/img/index/icon-add.png" class="img-add">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-item">
-                            <img src="../../public/img/index/3bfda051b23751a32bc1003333abbad432768.jpg" class="product-img">
-                            <div class="list-content">
-                                <h6 class="product-title">东北有机大米</h6>
-                                <span class="details">精选东北有机大米（米饭单点）单点米饭不配送</span>
-                                <span class="zan">赞86</span>
-                                <div class="bottom">
-                                    <span class="price">￥2.5</span>
-                                    <img src="../../public/img/index/icon-add.png" class="img-add">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-item">
-                            <img src="../../public/img/index/3bfda051b23751a32bc1003333abbad432768.jpg" class="product-img">
-                            <div class="list-content">
-                                <h6 class="product-title">东北有机大米</h6>
-                                <span class="details">精选东北有机大米（米饭单点）单点米饭不配送</span>
-                                <span class="zan">赞86</span>
-                                <div class="bottom">
-                                    <span class="price">￥2.5</span>
-                                    <img src="../../public/img/index/icon-add.png" class="img-add">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-item">
-                            <img src="../../public/img/index/3bfda051b23751a32bc1003333abbad432768.jpg" class="product-img">
-                            <div class="list-content">
-                                <h6 class="product-title">东北有机大米</h6>
-                                <span class="details">精选东北有机大米（米饭单点）单点米饭不配送</span>
-                                <span class="zan">赞86</span>
-                                <div class="bottom">
-                                    <span class="price">￥2.5</span>
-                                    <img src="../../public/img/index/icon-add.png" class="img-add">
-                                </div>
-                            </div>
-                        </li>
-                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="comment-content">
-            <div class="comment">
-
-            </div>
-        </div> -->
+        <tu-details-content></tu-details-content>
     </div>
 </template>
 
@@ -126,29 +20,18 @@ import DetailsContent from '../components/Details/DetailsContent.vue'
 export default {
     data: function(){
         return {
-            // menus: [],
-            // selected: 0
+            
         }
     },
     methods: {
         goBack: function(){
             history.go(-1);
-        }/* ,
-        getData: function(){
-            this.$http.get('http://localhost:5050/details').then((res)=>{
-                console.log(res);
-                this.menus = res.data.menus;
-            });
-        },
-        choose: function(i){
-            this.selected = i;
-        } */
+        }
     },
     created(){
-        // this.getData();
     },
     components: {
-        "details-content": DetailsContent
+        "tu-details-content": DetailsContent
     }
 }
 </script>
