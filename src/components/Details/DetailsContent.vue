@@ -24,15 +24,17 @@
                                 </div>
                             </div>
                         </li>
-                        
                     </ul>
                 </div>
             </div>
         </div>
+        <tu-shopcart></tu-shopcart>
     </div>
 </template>
 <script>
 import ChangeCounts from '../subcomponents/ChangeCounts.vue'
+import ShopCart from '../ShopCart/ShopCart.vue'
+
 export default {
   data: function() {
     return {
@@ -64,7 +66,8 @@ export default {
       this.getData();
   },
   components: {
-    "tu-changecounts": ChangeCounts
+    "tu-changecounts": ChangeCounts,
+    "tu-shopcart": ShopCart
   }
 };
 </script>
@@ -161,6 +164,11 @@ export default {
   font-size: 18px;
   color: #fe4d3d;
   font-weight: 800;
+}
+.app-shop-cart{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 </style>
 

@@ -20,18 +20,7 @@ export default {
         }
     },
     methods:{
-        /* getActive: function(n,e){
-            if(e.target.nodeName=="P" || e.target.nodeName=="I"){
-                var parent = e.target.parentNode;
-                var footer = document.getElementById("footer");
-                var iList = footer.querySelectorAll("#footer i");
-                for(var item of iList){
-                    item.className = "";
-                }
-                iList[n].className = "active";
-                console.log(e.target)
-            }
-        } */
+        
     },
     created(){
         console.log(this.$route.path);
