@@ -11,7 +11,7 @@
                 </div>
                 <div class="right">
                     <h5 class="right-title">热销</h5>
-                    <ul class="product-list">
+                    <ul class="product-list" v-for="(item,i) in menus" :key="i" v-if="selected==i">
                         <li class="list-item" v-for="item in contentList" :key="item.id">
                             <img :src="item.img" class="product-img">
                             <div class="list-content">
@@ -20,15 +20,10 @@
                                 <span class="zan">赞{{item.zan}}</span>
                                 <div class="bottom">
                                     <span class="price">￥{{item.price}}</span>
-                                    <div>
-                                        <img src="../../../public/img/icon/icon-subtract.png" class="counts-change" @click="subCount()" v-if="!counts==0">
-                                        <span class="counts" v-if="!counts==0">{{counts}}</span>
-                                        <img src="../../../public/img/icon/icon-add.png" class="counts-change" @click="addCount()">
-                                    </div>
+                                    <tu-changecounts></tu-changecounts>
                                 </div>
                             </div>
                         </li>
-                        
                         
                     </ul>
                 </div>
@@ -37,12 +32,12 @@
     </div>
 </template>
 <script>
+import ChangeCounts from '../subcomponents/ChangeCounts.vue'
 export default {
   data: function() {
     return {
       menus: [],
       selected: 0,
-      counts: 1,
       contentList: []
     };
   },
@@ -54,21 +49,22 @@ export default {
         this.contentList = res.data.contents;
       });
     },
+    getContentList(){
+      this.$http.get("http://localhost:5050/details").then((res)=>{
+        this.contentList = res.data.contents;
+      });
+    },
     choose: function(i) {
       this.selected = i;
-    },
-    addCount: function(){
-        this.counts++;
-    },
-    subCount: function(){
-        if(this.counts==0){
-            return;
-        }
-        this.counts--;
+      this.getContentList();
+      console.log(i);
     }
   },
   created(){
       this.getData();
+  },
+  components: {
+    "tu-changecounts": ChangeCounts
   }
 };
 </script>
@@ -165,15 +161,6 @@ export default {
   font-size: 18px;
   color: #fe4d3d;
   font-weight: 800;
-}
-.counts-change {
-  width: 24px;
-  height: 25px;
-  border-radius: 50%;
-  vertical-align: middle;
-}
-.counts{
-    padding: 0 5px;
 }
 </style>
 

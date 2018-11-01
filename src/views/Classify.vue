@@ -247,7 +247,6 @@ export default {
         border: 1px solid #ccc;
         text-align: center;
         margin: 10px;
-        /* font-size: 12px; */
     }
     .discounts{
         padding-left: 15px;
@@ -255,7 +254,6 @@ export default {
     }
     .discounts span{
         display: block;
-        /* font-size: 12px; */
         color: #999;
         padding: 10px 0;
     }
