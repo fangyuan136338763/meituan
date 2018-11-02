@@ -87,7 +87,7 @@ export default {
 .middle {
   position: absolute;
   top: 0;
-  bottom: 0px;
+  bottom: 51px;
   left: 0px;
   overflow-y: scroll;
   padding-right: 20px;
@@ -116,6 +116,7 @@ export default {
 }
 .right {
   margin-left: 90px;
+  padding-bottom: 51px;
 }
 .right-title {
   height: 36px;

@@ -37,6 +37,9 @@ export default {
 </script>
 
 <style scoped>
+    .details-container{
+        position: relative;
+    }
     .details-header{
         position: fixed;
         top: 0;
