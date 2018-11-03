@@ -3,37 +3,62 @@
         <div class="shop-cart">
             <div class="left">
                 <div>
-                    <i class="icon-cart"><span class="sub">1</span></i>
+                    <i class="icon-cart" :class="$store.getters.optCount?'active':''" @click="showCart()"><span class="sub" v-if="$store.getters.optCount">{{$store.getters.optCount}}</span></i>
                 </div>
             </div>
             <div class="center">
-                <p class="price">￥4</p>
-                <p class="details">购物车空空如也~</p>
+                <p class="price" v-if="$store.getters.optCount">￥4</p>
+                <p class="details" v-if="!$store.getters.optCount">购物车空空如也~</p>
+                <p class="details" v-if="$store.getters.optCount">配送费以订单为准</p>
             </div>
             <span class="right">￥15起送</span>
         </div>
-        <div class="order">
+        <div class="order" @click.self="hideCart()" v-if="isShowCart">
             <div class="list">
                 <div class="clearcart">
+                    <span class="canhe">餐盒费{{$store.getters.optCount*1}}元</span>
                     <span>
                         <img src="../../../public/img/icon/rabbish.png">
                         清空购物车
                     </span>
                 </div>
-                <div>
-                    <span>伊利 畅轻有机燕麦</span>
-                    <div>
-                        <span>￥8.5</span>
-                    </div>
-                </div>
+                <tu-orderlist v-for="(item,i) in orderLists" :key="i" :item="item"></tu-orderlist>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import OrderList from './OrderList.vue'
 export default {
     name: 'ShopCart',
+    data: function(){
+        return {
+            isShowCart: false,
+            orderLists: []
+        }
+    },
+    methods: {
+        hideCart(){
+            this.isShowCart = false;
+        },
+        showCart(){
+            if(this.$store.getters.optCount){
+                this.isShowCart = true;
+            }
+        },
+        getListData(res){
+            this.orderLists.push(res);
+        }
+    },
+    created: function(){
+    },
+    mounted: function(){
+      this.$root.bus.$on('ee',this.getListData);
+    },
+    components: {
+        'tu-orderlist': OrderList
+    }
 }
 </script>
 
@@ -106,6 +131,7 @@ export default {
         bottom: 51px;
         left: 0;
         right: 0;
+        /* display: none; */
     }
     .list{
         position: absolute;
@@ -118,6 +144,9 @@ export default {
         background: #F4F4F4;
         text-align: right;
         padding: 10px;
+    }
+    .canhe{
+        float: left;
     }
     .clearcart span{
         font-size: 12px;

@@ -16,7 +16,12 @@ Vue.prototype.$http = Axios;
 
 Vue.component(Footer.name,Footer);
 
+var bus = new Vue();
+
 new Vue({
+  data:{
+    bus
+  },
   router,
   store,
   render: h => h(App)

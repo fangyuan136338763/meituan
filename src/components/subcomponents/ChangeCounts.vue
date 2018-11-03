@@ -13,19 +13,29 @@
                 counts: 0
             }
         },
+        props: ["objProduct",'count'],
         methods: {
             addCount: function(){
-                this.counts++;
+                if(this.objProduct){
+                    this.counts++;
+                    this.$store.commit("increment");
+                    this.objProduct.counts = this.counts;
+                    this.$root.bus.$emit('ee',this.objProduct);
+                }
+                if(this.count){
+                    this.counts = this.count;
+                }
+                
             },
             subCount: function(){
                 if(this.counts==0){
                     return;
                 }
                 this.counts--;
-            } 
+                this.$store.commit("substract");
+            }
         },
         created(){
-
         }
     } 
 </script>

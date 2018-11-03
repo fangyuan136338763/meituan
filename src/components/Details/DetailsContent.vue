@@ -6,13 +6,13 @@
                     <div class="middle">
                         <ul class="left-menu" :style="'height:'+menus.length*61+'px'">
                             <li v-for="(item,i) in menus" :key="i" @click="choose(i)" :class="selected==i?'active':''"><div><span>{{item.title}}</span></div></li>
-                        </ul>
+                        </ul> 
                     </div>
                 </div>
                 <div class="right">
                     <h5 class="right-title">热销</h5>
                     <ul class="product-list" v-for="(item,i) in menus" :key="i" v-if="selected==i">
-                        <li class="list-item" v-for="item in contentList" :key="item.id">
+                        <!-- <li class="list-item" v-for="item in contentList" :key="item.id">
                             <img :src="item.img" class="product-img">
                             <div class="list-content">
                                 <h6 class="product-title">{{item.title}}</h6>
@@ -23,7 +23,8 @@
                                     <tu-changecounts></tu-changecounts>
                                 </div>
                             </div>
-                        </li>
+                        </li> -->
+                        <tu-oneproduct :contentLists="contentList"></tu-oneproduct>
                     </ul>
                 </div>
             </div>
@@ -34,6 +35,7 @@
 <script>
 import ChangeCounts from '../subcomponents/ChangeCounts.vue'
 import ShopCart from '../ShopCart/ShopCart.vue'
+import OneProduct from './OneProduct.vue'
 
 export default {
   data: function() {
@@ -61,13 +63,17 @@ export default {
       this.getContentList();
       console.log(i);
     }
+    
   },
   created(){
       this.getData();
   },
+  mounted: function(){
+  },
   components: {
     "tu-changecounts": ChangeCounts,
-    "tu-shopcart": ShopCart
+    "tu-shopcart": ShopCart,
+    "tu-oneproduct": OneProduct
   }
 };
 </script>
@@ -131,11 +137,8 @@ export default {
   background-color: #fc6;
   margin-right: 3px;
 }
-.right .product-img {
-  height: 62px;
-  margin-right: 10px;
-}
-.list-item {
+
+/* .list-item {
   display: flex;
   padding: 15px 0 10px;
   border-bottom: 1px solid #ddd;
@@ -151,7 +154,6 @@ export default {
   font-weight: normal;
   margin-bottom: 5px;
 }
-.details,
 .list-content .zan {
   font-size: 12px;
   color: #a9a9a9;
@@ -165,7 +167,7 @@ export default {
   font-size: 18px;
   color: #fe4d3d;
   font-weight: 800;
-}
+} */
 .app-shop-cart{
   position: fixed;
   bottom: 0;
