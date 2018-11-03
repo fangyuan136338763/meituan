@@ -12,19 +12,9 @@
                 <div class="right">
                     <h5 class="right-title">热销</h5>
                     <ul class="product-list" v-for="(item,i) in menus" :key="i" v-if="selected==i">
-                        <!-- <li class="list-item" v-for="item in contentList" :key="item.id">
-                            <img :src="item.img" class="product-img">
-                            <div class="list-content">
-                                <h6 class="product-title">{{item.title}}</h6>
-                                <span class="details">{{item.details}}</span>
-                                <span class="zan">赞{{item.zan}}</span>
-                                <div class="bottom">
-                                    <span class="price">￥{{item.price}}</span>
-                                    <tu-changecounts></tu-changecounts>
-                                </div>
-                            </div>
-                        </li> -->
+                        
                         <tu-oneproduct :contentLists="contentList"></tu-oneproduct>
+                        
                     </ul>
                 </div>
             </div>
@@ -61,7 +51,7 @@ export default {
     choose: function(i) {
       this.selected = i;
       this.getContentList();
-      console.log(i);
+      // console.log(i);
     }
     
   },
@@ -138,36 +128,7 @@ export default {
   margin-right: 3px;
 }
 
-/* .list-item {
-  display: flex;
-  padding: 15px 0 10px;
-  border-bottom: 1px solid #ddd;
-}
-.list-content {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding-right: 10px;
-}
-.product-title {
-  font-size: 16px;
-  font-weight: normal;
-  margin-bottom: 5px;
-}
-.list-content .zan {
-  font-size: 12px;
-  color: #a9a9a9;
-  margin-bottom: 5px;
-}
-.list-content .bottom {
-  display: flex;
-  justify-content: space-between;
-}
-.list-content .price {
-  font-size: 18px;
-  color: #fe4d3d;
-  font-weight: 800;
-} */
+
 .app-shop-cart{
   position: fixed;
   bottom: 0;

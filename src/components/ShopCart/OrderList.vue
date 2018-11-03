@@ -1,9 +1,11 @@
 <template>
     <div class="app-orderlist">
-        <span class="title">{{item.title}}</span>
-        <div class="right">
-            <span class="price">￥{{item.price}}</span>
-            <tu-changecounts :count="item.counts"></tu-changecounts>
+        <div class="orderlist">
+            <span class="title">{{item.title}}</span>
+            <div class="right">
+                <span class="price">￥{{item.price}}</span>
+                <tu-changecounts :count="item.counts" :shopcartState="cartState"></tu-changecounts>
+            </div>
         </div>
     </div>
 </template>
@@ -15,7 +17,7 @@ export default {
         return {
         }
     },
-    props: ['item'],
+    props: ['item','cartState'],
     methods: {
        
     },
@@ -30,7 +32,7 @@ export default {
 </script>
 
 <style scoped>
-    .app-orderlist{
+    .orderlist{
         display: flex;
         flex-direction: row;
         justify-content: space-between;

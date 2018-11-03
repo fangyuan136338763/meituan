@@ -13,19 +13,22 @@
                 counts: 0
             }
         },
-        props: ["objProduct",'count'],
+        props: ["objProduct",'count','shopcartState'],
         methods: {
             addCount: function(){
-                if(this.objProduct){
                     this.counts++;
                     this.$store.commit("increment");
-                    this.objProduct.counts = this.counts;
-                    this.$root.bus.$emit('ee',this.objProduct);
-                }
-                if(this.count){
-                    this.counts = this.count;
-                }
-                
+                    if(!this.shopcartState){
+                        if(this.objProduct.counts){
+                            this.objProduct.state = false;
+                        }else{
+                            this.objProduct.state = true;
+                        }
+                        this.objProduct.counts = this.counts;
+                        this.$root.bus.$emit('ee',this.objProduct);
+                    }
+
+                    
             },
             subCount: function(){
                 if(this.counts==0){
@@ -33,9 +36,19 @@
                 }
                 this.counts--;
                 this.$store.commit("substract");
+                if(!this.shopcartState){
+                    this.objProduct.counts = this.counts;
+                    this.$root.bus.$emit('ee',this.objProduct);
+
+                }else{
+                    this.count = this.counts;
+                }
             }
         },
         created(){
+            if(this.count){
+                this.counts = this.count;
+            }
         }
     } 
 </script>

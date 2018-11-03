@@ -22,7 +22,7 @@
                         清空购物车
                     </span>
                 </div>
-                <tu-orderlist v-for="(item,i) in orderLists" :key="i" :item="item"></tu-orderlist>
+                <tu-orderlist v-for="(item,i) in orderLists" :key="i" :item="item" :cartState="isShowCart"></tu-orderlist>
             </div>
         </div>
     </div>
@@ -48,7 +48,10 @@ export default {
             }
         },
         getListData(res){
-            this.orderLists.push(res);
+            if(res.state){
+                this.orderLists.push(res);
+            }
+           
         }
     },
     created: function(){
