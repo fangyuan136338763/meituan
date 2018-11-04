@@ -7,7 +7,7 @@
                 </div>
             </div>
             <div class="center">
-                <p class="price" v-if="$store.getters.optCount">￥4</p>
+                <p class="price" v-if="$store.getters.optCount">￥{{getSum}}</p>
                 <p class="details" v-if="!$store.getters.optCount">购物车空空如也~</p>
                 <p class="details" v-if="$store.getters.optCount">配送费以订单为准</p>
             </div>
@@ -17,7 +17,7 @@
             <div class="list">
                 <div class="clearcart">
                     <span class="canhe">餐盒费{{$store.getters.optCount*1}}元</span>
-                    <span>
+                    <span @click="clearCart">
                         <img src="../../../public/img/icon/rabbish.png">
                         清空购物车
                     </span>
@@ -50,14 +50,36 @@ export default {
         getListData(res){
             if(res.state){
                 this.orderLists.push(res);
+                console.log(this.orderLists);
             }
-           
+            if(res.counts==0){
+                for(var i=0;i<this.orderLists.length;i++){
+                    if(this.orderLists[i].id==res.id){
+                        this.orderLists.splice(i,1);
+                    }
+                }
+            }
+        },
+        clearCart(){
+            this.orderLists = [];
+            this.$store.commit('clearCount');
+            this.isShowCart = false;
         }
     },
     created: function(){
     },
     mounted: function(){
-      this.$root.bus.$on('ee',this.getListData);
+      this.$root.bus.$on('buttonToCart',this.getListData);
+    },
+    computed: {
+        getSum(){
+            var result = 0;
+            for(var tmp of this.orderLists){
+                result += tmp.price*tmp.counts;
+            }
+            result += this.$store.getters.optCount*1;
+            return result.toFixed(2);
+        }
     },
     components: {
         'tu-orderlist': OrderList

@@ -4,7 +4,7 @@
             <span class="title">{{item.title}}</span>
             <div class="right">
                 <span class="price">￥{{item.price}}</span>
-                <tu-changecounts :count="item.counts" :shopcartState="cartState"></tu-changecounts>
+                <tu-changecounts :count="item.counts" :shopcartState="cartState" :obj="item"></tu-changecounts>
             </div>
         </div>
     </div>
