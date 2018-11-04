@@ -50,11 +50,13 @@ export default {
         getListData(res){
             if(res.state){
                 this.orderLists.push(res);
-                console.log(this.orderLists);
+                // console.log(this.orderLists);
             }
             if(res.counts==0){
                 for(var i=0;i<this.orderLists.length;i++){
                     if(this.orderLists[i].id==res.id){
+                        console.log(this.orderLists);
+                        console.log(i);
                         this.orderLists.splice(i,1);
                     }
                 }

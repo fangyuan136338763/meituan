@@ -21,7 +21,6 @@ import ChangeCounts from '../subcomponents/ChangeCounts.vue'
 export default {
     data: function(){
         return {
-            counts: 0
         }
     },
     props: ["contentLists"],

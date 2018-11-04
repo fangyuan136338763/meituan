@@ -1,7 +1,7 @@
 <template>
         <div class="app-changecounts">
-            <img src="../../../public/img/icon/icon-subtract.png" class="counts-change" @click="subCount()" v-if="!counts==0">
-            <span class="counts" v-if="!counts==0">{{counts}}</span>
+            <img src="../../../public/img/icon/icon-subtract.png" class="counts-change" @click="subCount()" v-if="!oneObj.counts==0">
+            <span class="counts" v-if="!oneObj.counts==0">{{oneObj.counts}}</span>
             <img src="../../../public/img/icon/icon-add.png" class="counts-change" @click="addCount()">
         </div>
 </template>
@@ -10,36 +10,49 @@
     export default {
         data: function(){
             return {
-                counts: 0,
+                oneObj: {
+                    counts: 0
+                }
             }
         },
         props: ["objProduct",'count','shopcartState','obj'],
         methods: {
             addCount: function(){
-                    this.counts++;
-                    this.$store.commit("increment");
-                    if(!this.shopcartState){//购物车非激活状态
-                        if(this.objProduct.counts){
-                            this.objProduct.state = false;
-                        }else{
-                            this.objProduct.state = true;
-                        }
-                        this.objProduct.counts = this.counts;
-                        this.$root.bus.$emit('buttonToCart',this.objProduct);
+                    if(this.oneObj.counts){
+                        this.oneObj.state = false;
+                    }else{
+                        this.oneObj.state = true;
                     }
+                    this.oneObj.counts++;
+                    this.$store.commit("increment");
+                    
+                    for(var key in this.objProduct){
+                        this.oneObj[key] = this.objProduct[key];
+                    }
+                    // console.log(this.oneObj.counts);
+                    this.$root.bus.$emit('buttonToCart',this.oneObj);
                     if(this.shopcartState){//购物车激活状态
                         this.obj.counts++;
-                        console.log(this.obj.counts);
                     }
-                    
             },
             subCount: function(){
-                if(this.counts==0){
+                if(this.oneObj.counts==0){
                     return;
                 }
-                this.counts--;
+                this.oneObj.counts--;
                 this.$store.commit("substract");
-                if(!this.shopcartState){
+                console.log(this.obj);
+                this.$root.bus.$emit('buttonToCart',this.oneObj);
+                if(this.shopcartState){
+                    this.obj.counts--;
+                    if(this.obj.counts==0){
+                        // console.log(this.oneObj);
+                        this.oneObj.counts = this.obj.counts;
+                        this.$root.bus.$emit('buttonToCart',this.obj);
+                    }
+                    // this.$root.bus.$emit('buttonToCart',this.oneObj);
+                }
+                /* if(!this.shopcartState){
                     this.objProduct.counts = this.counts;
                     if(this.objProduct.counts==0){
                         this.objProduct.state = false;
@@ -50,12 +63,12 @@
                 if(this.shopcartState){//购物车激活状态
                         this.obj.counts--;
                         console.log(this.obj.counts);
-                }
+                } */
             }
         },
         created(){
             if(this.count){
-                this.counts = this.count;
+                this.oneObj.counts = this.count;
                 
             }
         },
