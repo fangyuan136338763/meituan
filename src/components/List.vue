@@ -19,14 +19,14 @@
                                     <span class="sales-counts">月售{{item.sales}}+</span>
                                 </div>
                                 <div class="space-time">
-                                    <span class="time">{{item.time}}min</span>
+                                    <span class="time">{{item.p_time}}min</span>
                                     <span class="space">{{item.distance}}km</span>
                                 </div>
                             </div>
                             <div class="send">
                                 <div class="send-price">
-                                    <span class="price">起送价￥{{item.send}}</span>
-                                    <span>配送￥{{item.price}}</span>
+                                    <span class="price">起送价￥{{item.p_price}}</span>
+                                    <span>配送￥{{item.s_price}}</span>
                                 </div>
                                 <span class="send-self" v-if="item.isMtSend">美团专送</span>
                             </div>
@@ -46,19 +46,21 @@
 export default {
     data: function(){
         return {
-            shops:[]
         }
     },
+    props:['shops'],
     methods:{
-        getData: function(){
-            this.$http.get('http://localhost:5050/home').then(data=>{
-                // console.log(data);
-                this.shops = data.data.shop;
+        /* getData: function(){
+            console.log(this.id);
+            var url = "http://localhost:5050/home/classify?id="+this.id;
+            this.$http.get(url).then(data=>{
+                console.log(data);
+                this.shops = data.data;
             });
-        }
+        } */
     },
     created(){
-        this.getData();
+        // this.getData();
     },
 }
 </script>

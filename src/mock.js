@@ -1,6 +1,6 @@
 const Mock = require('mockjs');
 
-Mock.mock('http://localhost:5050/home',{
+/* Mock.mock('http://localhost:5050/home',{
     'shop|10-20':[{
         'id|+1': 1,
         'title': "@ctitle(3,10)",
@@ -12,7 +12,7 @@ Mock.mock('http://localhost:5050/home',{
         'isMtSend|0-1': 0,
         'img': "@image('833x625',@color)"
     }]
-});
+}); */
 /* Mock.mock('http://localhost:5050/home/grid',{
     'menuList|8':[{
         'id|+1': 1,

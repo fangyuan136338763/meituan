@@ -2,12 +2,12 @@
     <div class="classify">
         <div class="header">
             <img src="../../public/img/index/arrow.png" @click="goBack()">
-            <h4 class="title">美食</h4>
+            <h4 class="title">{{classifyName}}</h4>
         </div>
         <div class="classify-search">
             <ul class="classify-search-select">
                 <li class="classify-search-item" @click.self="selectTab($event)" data-index="1">
-                    美食
+                    {{classifyName}}
                     <img src="../../public/img/icon/down-arrow.png">
                 </li>
                 <li class="classify-search-item"  @click.self="selectTab($event)" data-index="2">
@@ -72,7 +72,7 @@
                 </div>
             </div>
         </div>
-        <tu-list></tu-list>
+        <tu-list :shops="shops"></tu-list>
     </div>
 </template>
 
@@ -81,7 +81,10 @@ import List from '../components/List.vue'
 export default {
     data: function(){
         return {
-            selected: 0
+            selected: 0,
+            id: 0,
+            classifyName: "",
+            shops: []
         }
     },
     components: {"TuList": List},
@@ -99,10 +102,21 @@ export default {
         },
         getClassifyId(){
             console.log(this.$route.params);
+            this.id = this.$route.params.id;
+        },
+        getData: function(){
+            console.log(this.id);
+            var url = "http://localhost:5050/home/classify?id="+this.id;
+            this.$http.get(url).then(data=>{
+                console.log(data);
+                this.shops = data.data;
+                this.classifyName = data.data[0].ftitle;
+            });
         }
     },
     created(){
         this.getClassifyId();
+        this.getData();
     }
 }
 </script>

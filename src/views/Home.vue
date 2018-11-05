@@ -16,7 +16,7 @@
         <div class="near-shops">
             <p>—— 附近商家 ——</p>
         </div>
-        <tu-list></tu-list>
+        <tu-list :shops="shop"></tu-list>
         <tu-footer></tu-footer>
     </div>
 </template>
@@ -26,10 +26,23 @@ import Grid from '../components/Grid.vue'
 import List from '../components/List.vue'
 export default {
     data:function(){
-        return {}
+        return {
+            shop: []
+        }
     },
-    methods:{},
-    created(){},
+    methods:{
+        getNearShop(){
+            var url = "http://localhost:5050/home";
+            this.$http.get(url).then((res)=>{
+                console.log(res);
+                this.shop = res.data;
+                console.log(this.shop);
+            });
+        }
+    },
+    created(){
+        this.getNearShop();
+    },
     components:{
         "tuGrid": Grid,
         "tuList": List
