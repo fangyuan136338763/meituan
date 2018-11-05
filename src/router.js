@@ -7,6 +7,8 @@ import Location from './views/Location.vue'
 import Search from './views/Search.vue'
 import Classify from './views/Classify.vue'
 import Details from './views/Details.vue'
+import Login from './views/Login.vue'
+import Register from './views/Register.vue'
 
 Vue.use(Router)
 
@@ -25,7 +27,9 @@ export default new Router({
     {path: '/home/location',component: Location},
     {path: '/home/search',component: Search},
     {path: '/home/classify/:id',component: Classify},
-    {path: '/details',component: Details}
+    {path: '/details',component: Details},
+    {path: '/login',component: Login},
+    {path: '/register',component: Register}
     
   ]
 })

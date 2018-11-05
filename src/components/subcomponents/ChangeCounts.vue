@@ -29,7 +29,6 @@
                     for(var key in this.objProduct){
                         this.oneObj[key] = this.objProduct[key];
                     }
-                    // console.log(this.oneObj.counts);
                     this.$root.bus.$emit('buttonToCart',this.oneObj);
                     if(this.shopcartState){//购物车激活状态
                         this.obj.counts++;
@@ -41,38 +40,43 @@
                 }
                 this.oneObj.counts--;
                 this.$store.commit("substract");
-                console.log(this.obj);
+                console.log(this.oneObj);
+                // console.log(this.obj);
+                if(this.oneObj.counts==0){
+                    this.oneObj.state = false;
+                }
                 this.$root.bus.$emit('buttonToCart',this.oneObj);
                 if(this.shopcartState){
                     this.obj.counts--;
+                    console.log(this.obj);
                     if(this.obj.counts==0){
-                        // console.log(this.oneObj);
-                        this.oneObj.counts = this.obj.counts;
                         this.$root.bus.$emit('buttonToCart',this.obj);
                     }
-                    // this.$root.bus.$emit('buttonToCart',this.oneObj);
                 }
-                /* if(!this.shopcartState){
-                    this.objProduct.counts = this.counts;
-                    if(this.objProduct.counts==0){
-                        this.objProduct.state = false;
-                    }
-                    this.$root.bus.$emit('buttonToCart',this.objProduct);
-                    console.log(this.objProduct);
+                
+            },
+            clearcart(res){
+                console.log(res);
+                if(res){
+                    this.oneObj.counts = 0;
                 }
-                if(this.shopcartState){//购物车激活状态
-                        this.obj.counts--;
-                        console.log(this.obj.counts);
-                } */
+            },
+            getnewData(){
+                if(this.count){
+                    // console.log(this.count);
+                    // console.log(this.oneObj.counts);
+                    console.log(this.obj.counts);
+                    // console.log(this.objProduct.counts);
+                    this.oneObj.counts = this.count;
+                }
             }
         },
         created(){
-            if(this.count){
-                this.oneObj.counts = this.count;
-                
-            }
+            
         },
         mounted(){
+            this.getnewData();
+            this.$root.bus.$on('clearCart',this.clearcart);
         }
     } 
 </script>

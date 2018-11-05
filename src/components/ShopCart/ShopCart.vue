@@ -11,7 +11,9 @@
                 <p class="details" v-if="!$store.getters.optCount">购物车空空如也~</p>
                 <p class="details" v-if="$store.getters.optCount">配送费以订单为准</p>
             </div>
-            <span class="right">￥15起送</span>
+            <span class="right" v-if="$store.getters.optCount==0">￥15起送</span>
+            <span class="right" v-if="getSum<15&&$store.getters.optCount>0">还差￥{{(15-getSum).toFixed(2)}}</span>
+            <span class="right active" v-if="getSum>=15">去结算</span>
         </div>
         <div class="order" @click.self="hideCart()" v-if="isShowCart">
             <div class="list">
@@ -55,17 +57,23 @@ export default {
             if(res.counts==0){
                 for(var i=0;i<this.orderLists.length;i++){
                     if(this.orderLists[i].id==res.id){
-                        console.log(this.orderLists);
                         console.log(i);
                         this.orderLists.splice(i,1);
+                        console.log(this.orderLists);
                     }
                 }
+            }
+            // console.log(this.orderLists);
+            if(!this.orderLists[0]){
+                this.isShowCart = false;
             }
         },
         clearCart(){
             this.orderLists = [];
             this.$store.commit('clearCount');
             this.isShowCart = false;
+            this.isClearCart = true;
+            this.$root.bus.$emit('clearCart',true);
         }
     },
     created: function(){
@@ -105,9 +113,7 @@ export default {
         justify-content: center;
 
     }
-    .right{
-        width: 30%;
-    }
+    
     .price{
         color: #fff;
         font-size: 20px;
@@ -117,11 +123,16 @@ export default {
         font-size: 12px;
     }
     .right{
+        width: 30%;
         color: #999;
         font-size: 16px;
         line-height: 51px;
         text-align: center;
         padding: 0 10px;
+    }
+    .right.active{
+        background: #FFD161;
+        color: #000;
     }
     .icon-cart{
         background: url("../../../public/img/icon/shopcart.png") no-repeat;

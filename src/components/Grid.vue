@@ -2,8 +2,8 @@
     <div class="grid">
         <ul class="grid-container">
             <li class="grid-item" v-for="(item,i) in menuList" :key="i">
-                <router-link :to="'/home/classify/'+item.id">
-                    <img :src="item.img_url">
+                <router-link :to="'/home/classify/'+item.fid">
+                    <img :src="'http://localhost:5050/'+item.img">
                     <p>{{item.title}}</p>
                 </router-link>
             </li>
@@ -21,8 +21,8 @@ export default {
     methods:{
         getGridData(){
             this.$http.get('http://localhost:5050/home/grid').then((res)=>{
-                this.menuList = res.data.menuList;
-                // console.log(res);
+                this.menuList = res.data;
+                console.log(res);
             });
         }
     },
