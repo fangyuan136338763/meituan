@@ -1,8 +1,8 @@
 <template>
     <div class="list">
         <ul class="list-container">
-            <li class="list-item" v-for="item in shops" :key="item.id">
-                <router-link to="/details">
+            <li class="list-item" v-for="item in shops" :key="item.sid">
+                <router-link :to="'/details/'+item.sid">
                     <div class="list-item-top">
                         <img :src="item.img" class="shop-image">
                         <div class="list-item-top-content">
@@ -50,17 +50,9 @@ export default {
     },
     props:['shops'],
     methods:{
-        /* getData: function(){
-            console.log(this.id);
-            var url = "http://localhost:5050/home/classify?id="+this.id;
-            this.$http.get(url).then(data=>{
-                console.log(data);
-                this.shops = data.data;
-            });
-        } */
+        
     },
     created(){
-        // this.getData();
     },
 }
 </script>

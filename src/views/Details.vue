@@ -3,7 +3,7 @@
         <div class="details-header">
             <div class="top">
                 <img src="../../public/img/index/arrow.png" @click="goBack">
-                <h3 class="title">谢先生餐厅（乐都汇店）</h3>
+                <h3 class="title">{{shopMenus[0].stitle}}</h3>
             </div>
             <ul class="selector">
                 <li class="selector-item"><span class="active">点菜</span></li>
@@ -11,7 +11,7 @@
                 <li class="selector-item"><span>商家</span></li>
             </ul>
         </div>
-        <tu-details-content></tu-details-content>
+        <tu-details-content :shopMenus="shopMenus" :products="doubProducts"></tu-details-content>
     </div>
 </template>
 
@@ -20,15 +20,49 @@ import DetailsContent from '../components/Details/DetailsContent.vue'
 export default {
     data: function(){
         return {
-            
+            products: [],
+            shopMenus: [
+                []
+            ],
+            doubProducts: [
+                []
+            ]
+        
         }
     },
     methods: {
         goBack: function(){
             history.go(-1);
+        },
+        transformData(){
+            console.log(this.doubProducts);
+            for(var i=1;i<=this.shopMenus.length;i++){
+                this.doubProducts.push([]);
+                for(var j=0;j<this.products.length;j++){
+                if(i==this.products[j].mid){
+                    this.doubProducts[i].push(this.products[j]);
+                }
+                }
+            }
+            this.doubProducts.shift();
+            console.log(this.doubProducts);
+        },
+        getDetailData(){
+            console.log(this.$route.params.sid);
+            var sid = this.$route.params.sid;
+            var url = "http://localhost:5050/product/detail?sid="+sid;
+            this.$http.get(url).then((res)=>{
+                console.log(res);
+                this.products = res.data.products;
+                this.shopMenus = res.data.shopMenus;
+                this.transformData();
+                
+                
+            });
         }
     },
     created(){
+        this.getDetailData();
     },
     components: {
         "tu-details-content": DetailsContent

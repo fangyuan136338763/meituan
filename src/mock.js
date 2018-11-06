@@ -43,7 +43,7 @@ Mock.mock('http://localhost:5050/home/location',{
     }]
     
 });
-Mock.mock('http://localhost:5050/details',{
+/* Mock.mock('http://localhost:5050/details',{
     'menus|20': [{
         'id|+1': 1,
         'title': "@ctitle(2,4)"
@@ -56,5 +56,4 @@ Mock.mock('http://localhost:5050/details',{
         'price|1-100.1': 1,
         'img': "@image(500x375,@color)"
     }],
-
-});
+}); */

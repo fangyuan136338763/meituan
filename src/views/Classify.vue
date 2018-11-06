@@ -101,14 +101,14 @@ export default {
             }
         },
         getClassifyId(){
-            console.log(this.$route.params);
+            // console.log(this.$route.params);
             this.id = this.$route.params.id;
         },
         getData: function(){
-            console.log(this.id);
+            // console.log(this.id);
             var url = "http://localhost:5050/home/classify?id="+this.id;
             this.$http.get(url).then(data=>{
-                console.log(data);
+                // console.log(data);
                 this.shops = data.data;
                 this.classifyName = data.data[0].ftitle;
             });

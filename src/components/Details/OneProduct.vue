@@ -3,12 +3,12 @@
         <li class="list-item" v-for="item in contentLists" :key="item.id">
             <img :src="item.img" class="product-img">
             <div class="list-content">
-                <h6 class="product-title">{{item.title}}</h6>
+                <h6 class="product-title">{{item.ptitle}}</h6>
                 <span class="details">{{item.details}}</span>
                 <span class="zan">赞{{item.zan}}</span>
                 <div class="bottom">
                     <span class="price">￥{{item.price}}</span>
-                    <tu-changecounts :obj-product="{'id':item.id,'title':item.title,'price':item.price}"></tu-changecounts>
+                    <tu-changecounts :obj-product="{'id':item.pid,'title':item.ptitle,'price':item.price}"></tu-changecounts>
                 </div>
             </div>
         </li>

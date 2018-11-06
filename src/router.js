@@ -27,7 +27,7 @@ export default new Router({
     {path: '/home/location',component: Location},
     {path: '/home/search',component: Search},
     {path: '/home/classify/:id',component: Classify},
-    {path: '/details',component: Details},
+    {path: '/details/:sid',component: Details},
     {path: '/login',component: Login},
     {path: '/register',component: Register}
     

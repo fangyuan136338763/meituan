@@ -1,6 +1,8 @@
 <template>
   <div id="app-container">
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
     <!-- <tu-footer></tu-footer> -->
   </div>
 </template>

@@ -13,7 +13,7 @@ router.get('/grid',(req,res)=>{
 
 router.get('/classify',(req,res)=>{
     var $id = req.query.id;
-    console.log($id);
+    // console.log($id);
     if(!$id){return;}
     // var sql = "SELECT * FROM shop WHERE fid=?";
     var sql = "select f.title as ftitle,s.* from family as f inner join shop as s on f.fid=s.fid where s.fid=?"

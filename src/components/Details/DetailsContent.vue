@@ -4,16 +4,16 @@
             <div class="menu">
                 <div class="left">
                     <div class="middle">
-                        <ul class="left-menu" :style="'height:'+menus.length*61+'px'">
-                            <li v-for="(item,i) in menus" :key="i" @click="choose(i)" :class="selected==i?'active':''"><div><span>{{item.title}}</span></div></li>
+                        <ul class="left-menu" :style="'height:'+shopMenus.length*61+'px'">
+                            <li v-for="(item,i) in shopMenus" :key="i" @click="choose(i)" :class="selected==i?'active':''"><div><span>{{item.title}}</span></div></li>
                         </ul> 
                     </div>
                 </div>
-                <div class="right">
+                <div class="right" v-for="(item,i) in products" :key="i" v-if="selected==i">
                     <h5 class="right-title">热销</h5>
-                    <ul class="product-list" v-for="(item,i) in menus" :key="i" v-if="selected==i">
+                    <ul class="product-list">
                         
-                        <tu-oneproduct :contentLists="contentList"></tu-oneproduct>
+                        <tu-oneproduct :contentLists="item"></tu-oneproduct>
                         
                     </ul>
                 </div>
@@ -31,12 +31,12 @@ export default {
   data: function() {
     return {
       menus: [],
-      selected: 0,
-      contentList: []
+      selected: 0
     };
   },
+  props: ['shopMenus','products'],
   methods: {
-    getData: function() {
+    /* getData: function() {
       this.$http.get("http://localhost:5050/details").then(res => {
         console.log(res);
         this.menus = res.data.menus;
@@ -47,16 +47,16 @@ export default {
       this.$http.get("http://localhost:5050/details").then((res)=>{
         this.contentList = res.data.contents;
       });
-    },
+    }, */
     choose: function(i) {
       this.selected = i;
-      this.getContentList();
       // console.log(i);
     }
     
+    
   },
   created(){
-      this.getData();
+      // this.getData();
   },
   mounted: function(){
   },
@@ -88,6 +88,7 @@ export default {
   overflow-y: scroll;
   padding-right: 20px;
   width: 100px;
+  background: #ddd;
 }
 .details-content .menu .left li {
   width: 85px;
