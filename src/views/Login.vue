@@ -8,16 +8,16 @@
         <div class="input">
             <div class="phone">
                 <img src="../../public/img/icon/phone.png" alt="">
-                <input type="text" placeholder="请输入手机号">
+                <input type="text" placeholder="请输入手机号" v-model="uphone">
             </div>
             <div class="password">
                 <img src="../../public/img/icon/password.png" alt="">
-                <input type="password" placeholder="请输入密码">
+                <input type="password" placeholder="请输入密码" v-model="upwd">
             </div>
             <div class="details">说明：注册/登录说明您已同意<a href="#">《美团用户协议》</a></div>
         </div>
         <div class="box">
-            <button class="login">登录</button>
+            <button class="login" @click="loginIn()">登录</button>
         </div>
     </div>
 </template>
@@ -25,7 +25,10 @@
 <script>
 export default {
     data: function(){
-        return {}
+        return {
+            uphone: "",
+            upwd: ""
+        }
     },
     methods: {
         goBack(){
@@ -33,6 +36,16 @@ export default {
         },
         toRegisterPage(){
             this.$router.push('/register');
+        },
+        loginIn(){
+            var url = "http://localhost:5050/user/login";
+            this.$http.post(url,"uphone="+this.uphone+"&upwd="+this.upwd).then((res)=>{
+                console.log(res);
+                if(res.data.code==200){
+                    this.$router.push('/');
+                    sessionStorage.setItem("");
+                }
+            });
         }
     },
     created(){

@@ -34,8 +34,11 @@ export default {
             uphone: "",
             upwd: "",
             dupwd: "",
-            canRegister: this.checkphone()&&this.checkpassword()&&this.checkcpassword(),
-            errMsg: ''
+            canRegister: false,
+            errMsg: '',
+            isuphone: false,
+            isupwd: false,
+            isdupwd: false
         }
     },
     methods: {
@@ -53,30 +56,68 @@ export default {
         },
         checkphone(){
             var reg = /^1[34578]\d{9}$/;
+            var url = "http://localhost:5050/user/checkphone?uphone="+this.uphone;
+            this.$http.get(url).then((res)=>{
+                console.log(res);
+                if(res.data.code == 401){
+                    this.errMsg = res.data.msg;
+                    this.isuphone = false;
+                }else{
+                    this.isuphone = true;
+                }
+            });
             if(!reg.test(this.uphone)){
                 this.errMsg = "手机号码格式错误!!!";
+                this.isuphone = false;
+            }else{
+                this.isuphone = true;
+            };
+            if(this.isuphone&this.isupwd&this.isdupwd){
+                this.canRegister = true;
+            }else{
+                this.canRegister = false;
             }
-            return reg.test(this.uphone);
         },
         checkpassword(){
             var reg = /\w{6,12}/;
             if(!reg.test(this.upwd)){
                 this.errMsg = "密码为6-12位字母或数字";
+                this.idupwd = false;
+            }else{
+                this.isupwd = true;
             }
-            return reg.test(this.upwd);
+            if(this.isuphone&this.isupwd&this.isdupwd){
+                this.canRegister = true;
+            }else{
+                this.canRegister = false;
+            }
+            
         },
         checkcpassword(){
             if(this.upwd!=this.dupwd){
                 this.errMsg = "请确认两次输入的密码一样";
+                this.isdupwd = false;
+            }else if(!this.upwd){
+                this.errMsg = "请再次输入密码";
+                this.isdupwd = false;
+            }else{
+                this.isdupwd = true;
+
             }
-            return this.upwd!=this.dupwd;
+            if(this.isuphone&this.isupwd&this.isdupwd){
+                this.canRegister = true;
+            }else{
+                this.canRegister = false;
+            }
+            
         },
         clearmsg(){
             this.errMsg = "";
+            console.log(this.isuphone,this.isupwd,this.isdupwd);
+            console.log(this.canRegister);
         }
     },
     created(){
-
     }
 }
 </script>
