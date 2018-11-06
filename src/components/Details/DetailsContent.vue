@@ -36,27 +36,14 @@ export default {
   },
   props: ['shopMenus','products'],
   methods: {
-    /* getData: function() {
-      this.$http.get("http://localhost:5050/details").then(res => {
-        console.log(res);
-        this.menus = res.data.menus;
-        this.contentList = res.data.contents;
-      });
-    },
-    getContentList(){
-      this.$http.get("http://localhost:5050/details").then((res)=>{
-        this.contentList = res.data.contents;
-      });
-    }, */
+    
     choose: function(i) {
       this.selected = i;
-      // console.log(i);
     }
     
     
   },
   created(){
-      // this.getData();
   },
   mounted: function(){
   },

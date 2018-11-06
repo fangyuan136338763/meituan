@@ -13,7 +13,7 @@
             </div>
             <span class="right" v-if="$store.getters.optCount==0">￥15起送</span>
             <span class="right" v-if="getSum<15&&$store.getters.optCount>0">还差￥{{(15-getSum).toFixed(2)}}</span>
-            <span class="right active" v-if="getSum>=15">去结算</span>
+            <span class="right active" v-if="getSum>=15" @click="toComputed">去结算</span>
         </div>
         <div class="order" @click.self="hideCart()" v-if="isShowCart">
             <div class="list">
@@ -52,21 +52,19 @@ export default {
         getListData(res){
             if(res.state){
                 this.orderLists.push(res);
-                // console.log(this.orderLists);
             }
             if(res.counts==0){
                 for(var i=0;i<this.orderLists.length;i++){
                     if(this.orderLists[i].id==res.id){
                         console.log(i);
                         this.orderLists.splice(i,1);
-                        console.log(this.orderLists);
                     }
                 }
             }
-            // console.log(this.orderLists);
             if(!this.orderLists[0]){
                 this.isShowCart = false;
             }
+            this.$store.commit('getOrderList',this.orderLists);
         },
         clearCart(){
             this.orderLists = [];
@@ -74,6 +72,13 @@ export default {
             this.isShowCart = false;
             this.isClearCart = true;
             this.$root.bus.$emit('clearCart',true);
+        },
+        toComputed(){
+            if(!sessionStorage.id){
+                this.$router.push('/login');
+            }else{
+                alert('支付成功');
+            }
         }
     },
     created: function(){

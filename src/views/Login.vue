@@ -1,9 +1,9 @@
 <template>
     <div class="app-login">
         <div class="header">
-            <img src="../../public/img/index/arrow.png">
+            <img src="../../public/img/index/arrow.png" @click="goBack()">
             <h1 class="title">登录</h1>
-            <span>立即注册</span>
+            <span @click="toRegisterPage()">立即注册</span>
         </div>
         <div class="input">
             <div class="phone">
@@ -24,7 +24,20 @@
 
 <script>
 export default {
+    data: function(){
+        return {}
+    },
+    methods: {
+        goBack(){
+            history.go(-1);
+        },
+        toRegisterPage(){
+            this.$router.push('/register');
+        }
+    },
+    created(){
 
+    }
 }
 </script>
 

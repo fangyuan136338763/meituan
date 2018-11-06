@@ -63,10 +63,6 @@
             },
             getnewData(){
                 if(this.count){
-                    // console.log(this.count);
-                    // console.log(this.oneObj.counts);
-                    console.log(this.obj.counts);
-                    // console.log(this.objProduct.counts);
                     this.oneObj.counts = this.count;
                 }
             }
