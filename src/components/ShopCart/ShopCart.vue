@@ -77,7 +77,15 @@ export default {
             if(!sessionStorage.id){
                 this.$router.push('/login');
             }else{
-                alert('支付成功');
+                var url = "http://localhost:5050/user/order";
+                for(var i=0;i<this.orderLists.length;i++){
+                    var params = `pid=${this.orderLists[i].id}&ptitle=${this.orderLists[i].title}&pcounts=${this.orderLists[i].counts}`;
+                    this.$http.post(url,params).then((res)=>{
+                        console.log(res);
+                    });
+                }
+                alert('支付成功,点击跳转订单页面');
+                this.$router.push('/order');
             }
         }
     },

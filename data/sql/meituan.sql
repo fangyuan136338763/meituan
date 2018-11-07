@@ -8,6 +8,13 @@ CREATE TABLE user(
     upwd VARCHAR(64)
 );
 
+CREATE TABLE user_order(
+    oid INT PRIMARY KEY AUTO_INCREMENT,
+    pid INT,
+    ptitle VARCHAR(32),
+    pcounts INT
+);
+
 CREATE TABLE family(
     fid INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(32),
@@ -143,6 +150,7 @@ INSERT INTO shop_menu VALUES(null,4,'找奶茶',50);
 INSERT INTO shop_menu VALUES(null,5,'找口感',50);
 INSERT INTO shop_menu VALUES(null,6,'找鲜奶',50);
 INSERT INTO shop_menu VALUES(null,7,'找新鲜',50);
+
 
 CREATE TABLE product(
     pid INT PRIMARY KEY AUTO_INCREMENT,

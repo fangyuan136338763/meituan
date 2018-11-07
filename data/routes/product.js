@@ -27,5 +27,24 @@ router.get('/detail',(req,res)=>{
     });
 })
 
+router.get('/search',(req,res)=>{
+    var $key = req.query.key;
+    if(!$key){
+        res.send({code: 301,msg: "key required"});
+        return;
+    }
+    var sql = "select * from shop where title like '%";
+    sql += $key + "%'";
+    console.log(sql);
+    pool.query(sql,(err,result)=>{
+        if(err){throw err}
+        if(result[0]){
+            res.send(result);
+        }else{
+            res.send({code: 301, msg: '未查询到结果'});
+        }
+    });
+})
+
 
 module.exports = router;

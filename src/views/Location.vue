@@ -11,7 +11,7 @@
             <div class="city-id" v-for="(item,index) in citys" :key="index">
                 <div class="id">{{item[0].cId}}</div>
                 <ul class="city-item" v-for="city in item" :key="city.id">
-                    <li><a href="#" class="city">{{city.name}}</a></li>
+                    <li @click="changeLocation(city.name)"><a href="#" class="city">{{city.name}}</a></li>
                 </ul>
             </div>
         </div>
@@ -53,6 +53,9 @@ export default {
                 });
             }
         });
+    },
+    changeLocation(city){
+      this.position = city;
     }
   },
   created() {

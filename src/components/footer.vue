@@ -1,7 +1,7 @@
 <template>
     <div id="footer">
             <div class="footer-item" v-for="(p,i) in list" :key="i">
-                <router-link :to="path[i]">
+                <router-link :to="i==0?path[i]:id?path[i]:'/login'">
                         <i :class="i==index?'active':''"></i>
                         <p>{{p}}</p>
                 </router-link>
@@ -16,16 +16,21 @@ export default {
         return {
             list:["首页","订单","我的"],
             path:["/home","/order","/mine"],
-            index: 0
+            index: 0,
+            id: 0
+            
         }
     },
     methods:{
-        
+        getId(){
+            this.id = sessionStorage.getItem('id');
+        }
     },
     created(){
-        console.log(this.$route.path);
+        // console.log(this.$route.path);
         this.index = this.path.indexOf(this.$route.path);
-        console.log(this.index);
+        // console.log(this.index);
+        this.getId();
     }
 }
 </script>

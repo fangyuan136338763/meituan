@@ -24,6 +24,7 @@
             <span>常见问题</span>
         </div>
         <div class="divider"></div>
+        <div class="loginout"><span @click="loginOut()">退出登录</span></div>
         <div class="bottom">
             <span>客服电话:101-097-77</span>
         </div>
@@ -38,7 +39,12 @@ export default {
     data: function(){
         return {}
     },
-    methods:{},
+    methods:{
+        loginOut(){
+            sessionStorage.removeItem('id');
+            this.$router.push('/login');
+        }
+    },
     created(){}
 }
 </script>
@@ -96,5 +102,13 @@ export default {
         width: 100%;
         text-align: center;
         line-height: 46px;
+    }
+    .loginout{
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+    }
+    .loginout span{
+        color: red;
     }
 </style>

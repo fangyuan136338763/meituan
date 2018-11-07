@@ -32,7 +32,11 @@ export default {
     },
     methods: {
         goBack(){
-            history.go(-1);
+            if(!sessionStorage.getItem("id")){
+                this.$router.push('/home');
+            }else{
+                history.go(-1);
+            }
         },
         toRegisterPage(){
             this.$router.push('/register');
@@ -42,8 +46,8 @@ export default {
             this.$http.post(url,"uphone="+this.uphone+"&upwd="+this.upwd).then((res)=>{
                 console.log(res);
                 if(res.data.code==200){
-                    this.$router.push('/');
-                    sessionStorage.setItem("");
+                    sessionStorage.setItem("id",res.data.id);
+                    this.$router.push('/mine');
                 }
             });
         }

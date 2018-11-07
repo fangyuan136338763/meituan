@@ -55,11 +55,24 @@ router.post('/login',(req,res)=>{
     pool.query(sql,[$uphone,$upwd],(err,result)=>{
         if(err){throw err}
         if(result[0]){
-            res.send({code:200,msg: "login success"});
+            res.send({code:200,msg: "login success",id: result[0].uid});
         }else{
             res.send({code: 301,msg: "登录失败"});
         }
     });
+});
+
+router.post('/order',(req,res)=>{
+    var obj = req.body;
+    console.log(obj);
+    var sql = "INSERT INTO user_order set ?";
+    pool.query(sql,obj,(err,result)=>{
+        if(err){throw err}
+        if(result.affectedRows){
+            res.send({code: 200,msg: "pay success"});
+        }
+    });
+
 });
 
 module.exports = router;

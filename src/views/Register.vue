@@ -52,6 +52,9 @@ export default {
             var url = "http://localhost:5050/user/register";
             this.$http.post(url,'uphone='+this.uphone+"&upwd="+this.upwd).then((res)=>{
                 console.log(res);
+                if(res.data.code==200){
+                    this.$router.push('/login');
+                }
             });
         },
         checkphone(){
@@ -65,6 +68,11 @@ export default {
                 }else{
                     this.isuphone = true;
                 }
+                if(this.isuphone&this.isupwd&this.isdupwd){
+                    this.canRegister = true;
+                }else{
+                    this.canRegister = false;
+            }
             });
             if(!reg.test(this.uphone)){
                 this.errMsg = "手机号码格式错误!!!";

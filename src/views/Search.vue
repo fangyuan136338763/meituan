@@ -2,10 +2,10 @@
     <div class="search-page">
         <div class="header">
             <img src="../../public/img/index/arrow.png" @click="goBack()">
-            <input type="text" class="search-input" placeholder="请输入商家或商品名称">
-            <span class="search-btn">搜索</span>
+            <input type="text" class="search-input" placeholder="请输入商家或商品名称" v-model="key">
+            <span class="search-btn" @click="handleClick()">搜索</span>
         </div>
-        <tu-list></tu-list>
+        <tu-list :shops="shops"></tu-list>
     </div>
 </template>
 
@@ -13,7 +13,10 @@
 import List from '../components/List.vue'
 export default {
     data: function(){
-        return {}
+        return {
+            key: "",
+            shops: []
+        }
     },
     components: {
         "TuList": List
@@ -21,9 +24,25 @@ export default {
     methods:{
         goBack: function(){
             this.$router.push('/home');
+        },
+        handleClick(){
+            var url = "http://localhost:5050/product/search?key="+this.key;
+            this.$http.get(url).then((res)=>{
+                console.log(res);
+                if(res.data.code==301){
+                    this.shops = [];
+                }else{
+                    this.shops = res.data;
+                }
+                
+            });
         }
     },
+    watch:{
+        'key': 'handleClick'
+    },
     created(){
+
     }
 }
 </script>
