@@ -11,7 +11,7 @@
                 <li class="selector-item"><span>商家</span></li>
             </ul>
         </div>
-        <tu-details-content :shopMenus="shopMenus" :products="doubProducts"></tu-details-content>
+        <tu-details-content :shopMenus="shopMenus" :products="products"></tu-details-content>
     </div>
 </template>
 
@@ -23,10 +23,10 @@ export default {
             products: [],
             shopMenus: [
                 []
-            ],
-            doubProducts: [
+            ]/* ,
+            products: [
                 []
-            ]
+            ] */
         
         }
     },
@@ -34,35 +34,48 @@ export default {
         goBack: function(){
             history.go(-1);
         },
-        transformData(){
-            console.log(this.doubProducts);
-            for(var i=1;i<=this.shopMenus.length;i++){
-                this.doubProducts.push([]);
-                for(var j=0;j<this.products.length;j++){
-                if(i==this.products[j].mid){
-                    this.doubProducts[i].push(this.products[j]);
-                }
+        transformData(data){
+            for(var i=0;i<=this.shopMenus.length;i++){
+                this.products.push([]);
+                for(var j=0;j<data.length;j++){
+                    data[j].counts = 0;
+                    if(i+1==data[j].mid){
+                        // console.log(i,data[j].mid);
+                        // console.log(this.products[i]);
+                        this.products[i].push(data[j]);
+                    }
                 }
             }
-            this.doubProducts.shift();
-            console.log(this.doubProducts);
         },
         getDetailData(){
-            console.log(this.$route.params.sid);
+            // console.log(this.$route.params.sid);
             var sid = this.$route.params.sid;
             var url = "http://localhost:5050/product/detail?sid="+sid;
             this.$http.get(url).then((res)=>{
                 console.log(res);
-                this.products = res.data.products;
+                // this.products = res.data.products;
                 this.shopMenus = res.data.shopMenus;
-                this.transformData();
+                this.transformData(res.data.products);
                 
                 
             });
+        },
+        updateCounts(product){
+            // console.log(product);
+            // console.log(this.products);
+            for(var tmp of this.products){
+                if(tmp.pid==product.pid){
+                    tmp.counts = product.counts;
+                }
+            }
+            console.log(this.products);
         }
     },
     created(){
         this.getDetailData();
+    },
+    mounted(){
+        this.$root.bus.$on('toDetails',this.updateCounts);
     },
     components: {
         "tu-details-content": DetailsContent

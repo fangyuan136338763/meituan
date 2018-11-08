@@ -1,7 +1,7 @@
 <template>
         <div class="app-changecounts">
-            <img src="../../../public/img/icon/icon-subtract.png" class="counts-change" @click="subCount()" v-if="!oneObj.counts==0">
-            <span class="counts" v-if="!oneObj.counts==0">{{oneObj.counts}}</span>
+            <img src="../../../public/img/icon/icon-subtract.png" class="counts-change" @click="subCount()" v-if="item.counts">
+            <span class="counts" v-if="item.counts">{{item.counts}}</span>
             <img src="../../../public/img/icon/icon-add.png" class="counts-change" @click="addCount()">
         </div>
 </template>
@@ -10,15 +10,18 @@
     export default {
         data: function(){
             return {
-                oneObj: {
-                    counts: 0
-                }
+                
             }
         },
-        props: ["objProduct",'count','shopcartState','obj'],
+        props: ['item'],
+        // props: ["objProduct",'count','shopcartState','obj'],
         methods: {
             addCount: function(){
-                    if(this.oneObj.counts){
+                    this.item.counts++;
+                    this.$store.commit('increment');
+                    // console.log(this.item);
+                    this.$root.bus.$emit('toDetails',this.item);
+                    /* if(this.oneObj.counts){
                         this.oneObj.state = false;
                     }else{
                         this.oneObj.state = true;
@@ -32,10 +35,12 @@
                     this.$root.bus.$emit('buttonToCart',this.oneObj);
                     if(this.shopcartState){//购物车激活状态
                         this.obj.counts++;
-                    }
+                    } */
             },
             subCount: function(){
-                if(this.oneObj.counts==0){
+                this.item.counts--;
+                this.$store.commit('substract');
+                /* if(this.oneObj.counts==0){
                     return;
                 }
                 this.oneObj.counts--;
@@ -52,27 +57,27 @@
                     if(this.obj.counts==0){
                         this.$root.bus.$emit('buttonToCart',this.obj);
                     }
-                }
+                } */
                 
             },
             clearcart(res){
                 console.log(res);
                 if(res){
-                    this.oneObj.counts = 0;
+                    this.item.counts = 0;
                 }
-            },
-            getnewData(){
+            }
+            /* getnewData(){
                 if(this.count){
                     this.oneObj.counts = this.count;
                 }
-            }
+            } */
         },
         created(){
             
         },
         mounted(){
-            this.getnewData();
-            this.$root.bus.$on('clearCart',this.clearcart);
+            // this.getnewData();
+            // this.$root.bus.$on('clearCart',this.clearcart);
         }
     } 
 </script>

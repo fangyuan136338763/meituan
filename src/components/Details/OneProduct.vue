@@ -8,7 +8,7 @@
                 <span class="zan">赞{{item.zan}}</span>
                 <div class="bottom">
                     <span class="price">￥{{item.price}}</span>
-                    <tu-changecounts :obj-product="{'id':item.pid,'title':item.ptitle,'price':item.price}"></tu-changecounts>
+                    <tu-changecounts :item="item"></tu-changecounts>
                 </div>
             </div>
         </li>
@@ -29,7 +29,7 @@ export default {
         "tu-changecounts": ChangeCounts
     },
     methods: {
-        /* addCounts(){
+        addCounts(){
             var orderList = this.$store.getters.optOrderList;
             for(var i=0;i<this.contentLists.length;i++){
                 this.contentLists[i].counts = 0;
@@ -39,9 +39,12 @@ export default {
                     }
                 }
             }
-        } */
+        }
     },
+    beforeCreate(){
+        },
     created(){
+        this.addCounts();
     },  
     mounted(){
     }

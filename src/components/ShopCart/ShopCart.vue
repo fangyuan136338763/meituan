@@ -49,7 +49,7 @@ export default {
                 this.isShowCart = true;
             }
         },
-        getListData(res){
+        /* getListData(res){
             if(res.state){
                 this.orderLists.push(res);
             }
@@ -65,7 +65,7 @@ export default {
                 this.isShowCart = false;
             }
             this.$store.commit('getOrderList',this.orderLists);
-        },
+        }, */
         clearCart(){
             this.orderLists = [];
             this.$store.commit('clearCount');
