@@ -29,22 +29,11 @@ export default {
         "tu-changecounts": ChangeCounts
     },
     methods: {
-        addCounts(){
-            var orderList = this.$store.getters.optOrderList;
-            for(var i=0;i<this.contentLists.length;i++){
-                this.contentLists[i].counts = 0;
-                for(var j=0;j<orderList.length;j++){
-                    if(this.contentLists[i].pid==orderList[j].pid){
-                        this.contentLists[i].counts = orderList[j].counts;
-                    }
-                }
-            }
-        }
+        
     },
     beforeCreate(){
         },
     created(){
-        this.addCounts();
     },  
     mounted(){
     }

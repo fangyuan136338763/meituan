@@ -20,7 +20,6 @@
                     this.item.counts++;
                     this.$store.commit('increment');
                     // console.log(this.item);
-                    this.$root.bus.$emit('toDetails',this.item);
                     /* if(this.oneObj.counts){
                         this.oneObj.state = false;
                     }else{

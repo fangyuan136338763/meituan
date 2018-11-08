@@ -60,22 +60,12 @@ export default {
                 
             });
         },
-        updateCounts(product){
-            // console.log(product);
-            // console.log(this.products);
-            for(var tmp of this.products){
-                if(tmp.pid==product.pid){
-                    tmp.counts = product.counts;
-                }
-            }
-            console.log(this.products);
-        }
+        
     },
     created(){
         this.getDetailData();
     },
     mounted(){
-        this.$root.bus.$on('toDetails',this.updateCounts);
     },
     components: {
         "tu-details-content": DetailsContent
