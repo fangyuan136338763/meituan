@@ -1,18 +1,18 @@
 <template>
-    <div class="details-container">
-        <div class="details-header">
-            <div class="top">
-                <img src="../../public/img/index/arrow.png" @click="goBack">
-                <h3 class="title">{{shopMenus[0].stitle}}</h3>
+        <div class="details-container">
+            <div class="details-header">
+                <div class="top">
+                    <img src="../../public/img/index/arrow.png" @click="goBack">
+                    <h3 class="title" v-if="!isloading">{{shopMenus[0].stitle}}</h3>
+                </div>
+                <ul class="selector">
+                    <li class="selector-item"><span class="active">点菜</span></li>
+                    <li class="selector-item"><span>评价</span></li>
+                    <li class="selector-item"><span>商家</span></li>
+                </ul>
             </div>
-            <ul class="selector">
-                <li class="selector-item"><span class="active">点菜</span></li>
-                <li class="selector-item"><span>评价</span></li>
-                <li class="selector-item"><span>商家</span></li>
-            </ul>
+            <tu-details-content :shopMenus="shopMenus" :products="products"></tu-details-content>
         </div>
-        <tu-details-content :shopMenus="shopMenus" :products="products"></tu-details-content>
-    </div>
 </template>
 
 <script>
@@ -20,14 +20,9 @@ import DetailsContent from '../components/Details/DetailsContent.vue'
 export default {
     data: function(){
         return {
+            isloading: false,
             products: [],
-            shopMenus: [
-                []
-            ]/* ,
-            products: [
-                []
-            ] */
-        
+            shopMenus: []
         }
     },
     methods: {
@@ -40,14 +35,13 @@ export default {
                 for(var j=0;j<data.length;j++){
                     data[j].counts = 0;
                     if(i+1==data[j].mid){
-                        // console.log(i,data[j].mid);
-                        // console.log(this.products[i]);
                         this.products[i].push(data[j]);
                     }
                 }
             }
         },
         getDetailData(){
+            this.isloading = true;
             // console.log(this.$route.params.sid);
             var sid = this.$route.params.sid;
             var url = "http://localhost:5050/product/detail?sid="+sid;
@@ -56,8 +50,7 @@ export default {
                 // this.products = res.data.products;
                 this.shopMenus = res.data.shopMenus;
                 this.transformData(res.data.products);
-                
-                
+                this.isloading = false;
             });
         },
         

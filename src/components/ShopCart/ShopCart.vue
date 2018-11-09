@@ -24,7 +24,7 @@
                         清空购物车
                     </span>
                 </div>
-                <tu-orderlist v-for="(item,i) in orderLists" :key="i" :item="item" :cartState="isShowCart"></tu-orderlist>
+                <tu-orderlist v-for="(item,i) in orderLists" :key="i" :item="item" ></tu-orderlist>
             </div>
         </div>
     </div>
@@ -49,23 +49,20 @@ export default {
                 this.isShowCart = true;
             }
         },
-        /* getListData(res){
-            if(res.state){
-                this.orderLists.push(res);
-            }
+        getListData(res){
             if(res.counts==0){
                 for(var i=0;i<this.orderLists.length;i++){
-                    if(this.orderLists[i].id==res.id){
-                        console.log(i);
+                    if(this.orderLists[i].pid==res.pid){
                         this.orderLists.splice(i,1);
+                        if(!this.orderLists[0]){
+                            this.isShowCart = false;
+                        }
                     }
                 }
+            }else{
+                this.orderLists.push(res);
             }
-            if(!this.orderLists[0]){
-                this.isShowCart = false;
-            }
-            this.$store.commit('getOrderList',this.orderLists);
-        }, */
+        },
         clearCart(){
             this.orderLists = [];
             this.$store.commit('clearCount');

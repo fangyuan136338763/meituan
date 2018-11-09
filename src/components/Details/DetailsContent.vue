@@ -1,4 +1,5 @@
 <template>
+<keep-alive>
     <div class="app-details-content">
         <div class="details-content">
             <div class="menu">
@@ -10,7 +11,7 @@
                     </div>
                 </div>
                 <div class="right" v-for="(item,i) in products" :key="i" v-if="selected==i">
-                    <h5 class="right-title">热销</h5>
+                    <h5 class="right-title">{{item[0].title}}</h5>
                     <ul class="product-list">
                         
                         <tu-oneproduct :contentLists="item"></tu-oneproduct>
@@ -19,8 +20,9 @@
                 </div>
             </div>
         </div>
-        <tu-shopcart></tu-shopcart>
+        <tu-shopcart :products="products"></tu-shopcart>
     </div>
+</keep-alive>
 </template>
 <script>
 import ChangeCounts from '../subcomponents/ChangeCounts.vue'

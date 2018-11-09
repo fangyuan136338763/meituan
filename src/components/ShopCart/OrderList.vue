@@ -1,10 +1,10 @@
 <template>
     <div class="app-orderlist">
         <div class="orderlist">
-            <span class="title">{{item.title}}</span>
+            <span class="title">{{item.ptitle}}</span>
             <div class="right">
                 <span class="price">￥{{item.price}}</span>
-                <tu-changecounts :count="item.counts" :shopcartState="cartState" :obj="item"></tu-changecounts>
+                <tu-changecounts :item="item"></tu-changecounts>
             </div>
         </div>
     </div>
