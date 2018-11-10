@@ -72,13 +72,16 @@
                 </div>
             </div>
         </div>
-        <tu-list :shops="shops"></tu-list>
+        <keep-alive include="tu-list">
+            <tu-list :shops="shops"></tu-list>
+        </keep-alive>
     </div>
 </template>
 
 <script>
 import List from '../components/List.vue'
 export default {
+    name: "Classify",
     data: function(){
         return {
             selected: 0,

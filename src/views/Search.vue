@@ -12,6 +12,7 @@
 <script>
 import List from '../components/List.vue'
 export default {
+    name: "Search",
     data: function(){
         return {
             key: "",

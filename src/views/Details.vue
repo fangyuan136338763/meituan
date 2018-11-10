@@ -1,23 +1,25 @@
 <template>
-        <div class="details-container">
-            <div class="details-header">
-                <div class="top">
-                    <img src="../../public/img/index/arrow.png" @click="goBack">
-                    <h3 class="title" v-if="!isloading">{{shopMenus[0].stitle}}</h3>
+            <div class="details-container">
+                <div class="details-header">
+                    <div class="top">
+                        <img src="../../public/img/index/arrow.png" @click="goBack">
+                        <h3 class="title" v-if="!isloading">{{shopMenus[0].stitle}}</h3>
+                    </div>
+                    <ul class="selector">
+                        <li class="selector-item"><span class="active">点菜</span></li>
+                        <li class="selector-item"><span>评价</span></li>
+                        <li class="selector-item"><span>商家</span></li>
+                    </ul>
                 </div>
-                <ul class="selector">
-                    <li class="selector-item"><span class="active">点菜</span></li>
-                    <li class="selector-item"><span>评价</span></li>
-                    <li class="selector-item"><span>商家</span></li>
-                </ul>
+                <tu-details-content :shopMenus="shopMenus" :products="products"></tu-details-content>
             </div>
-            <tu-details-content :shopMenus="shopMenus" :products="products"></tu-details-content>
-        </div>
+
 </template>
 
 <script>
 import DetailsContent from '../components/Details/DetailsContent.vue'
 export default {
+    name: "Details",
     data: function(){
         return {
             isloading: false,

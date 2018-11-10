@@ -1,9 +1,9 @@
 <template>
     <div class="location-page">
         <div class="header">
-            <a href="/home">
+            <router-link to="/home">
                 <img src="../../public/img/index/logo.42591fec.png">
-            </a>
+            </router-link>
             <h4 class="title">选择城市</h4>
         </div>
         <p class="location">猜您当前位于：<span class="current">{{position}}</span></p>
@@ -21,6 +21,7 @@
 
 <script>
 export default {
+  name:  "Location",
   data: function() {
     return {
       citys: [],

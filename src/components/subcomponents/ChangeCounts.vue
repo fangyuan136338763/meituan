@@ -8,6 +8,7 @@
 
 <script>
     export default {
+        name: "ChangeCounts",
         data: function(){
             return {
             }

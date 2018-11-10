@@ -44,6 +44,7 @@
 
 <script>
 export default {
+    name: "List",
     data: function(){
         return {
         }

@@ -3,7 +3,7 @@
         <ul class="grid-container">
             <li class="grid-item" v-for="(item,i) in menuList" :key="i">
                 <router-link :to="'/home/classify/'+item.fid">
-                    <img :src="'http://localhost:5050/'+item.img">
+                    <img :src="item.img">
                     <p>{{item.title}}</p>
                 </router-link>
             </li>
@@ -13,6 +13,7 @@
 
 <script>
 export default {
+    name: "Grid",
     data: function(){
         return {
             menuList: []

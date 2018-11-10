@@ -20,14 +20,14 @@ CREATE TABLE family(
     title VARCHAR(32),
     img VARCHAR(256)
 );
-INSERT INTO family VALUES(10,'美食','img/home/grid/grid_1.png');
-INSERT INTO family VALUES(20,'美团超市','img/home/grid/grid_2.png');
-INSERT INTO family VALUES(30,'生鲜果蔬','img/home/grid/grid_3.png');
-INSERT INTO family VALUES(40,'美团专送','img/home/grid/grid_4.png');
-INSERT INTO family VALUES(50,'晚餐优选','img/home/grid/grid_5.png');
-INSERT INTO family VALUES(60,'甜点饮品','img/home/grid/grid_6.png');
-INSERT INTO family VALUES(70,'小吃馆','img/home/grid/grid_7.png');
-INSERT INTO family VALUES(80,'家常菜','img/home/grid/grid_8.png');
+INSERT INTO family VALUES(10,'美食','http://localhost:5050/img/home/grid/grid_1.png');
+INSERT INTO family VALUES(20,'美团超市','http://localhost:5050/img/home/grid/grid_2.png');
+INSERT INTO family VALUES(30,'生鲜果蔬','http://localhost:5050/img/home/grid/grid_3.png');
+INSERT INTO family VALUES(40,'美团专送','http://localhost:5050/img/home/grid/grid_4.png');
+INSERT INTO family VALUES(50,'晚餐优选','http://localhost:5050/img/home/grid/grid_5.png');
+INSERT INTO family VALUES(60,'甜点饮品','http://localhost:5050/img/home/grid/grid_6.png');
+INSERT INTO family VALUES(70,'小吃馆','http://localhost:5050/img/home/grid/grid_7.png');
+INSERT INTO family VALUES(80,'家常菜','http://localhost:5050/img/home/grid/grid_8.png');
 
 CREATE TABLE shop(
     sid INT PRIMARY KEY AUTO_INCREMENT,

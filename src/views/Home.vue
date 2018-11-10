@@ -25,6 +25,7 @@
 import Grid from '../components/Grid.vue'
 import List from '../components/List.vue'
 export default {
+    name: "Home",
     data:function(){
         return {
             shop: []

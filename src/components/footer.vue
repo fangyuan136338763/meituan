@@ -11,7 +11,7 @@
 
 <script>
 export default {
-    name: "tu-footer",
+    name: "Footer",
     data: function(){
         return {
             list:["首页","订单","我的"],

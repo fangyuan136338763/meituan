@@ -29,6 +29,7 @@
 
 <script>
 export default {
+    name: "Register",
     data: function(){
         return {
             uphone: "",

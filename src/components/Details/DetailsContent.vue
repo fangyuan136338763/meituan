@@ -1,5 +1,4 @@
 <template>
-<keep-alive>
     <div class="app-details-content">
         <div class="details-content">
             <div class="menu">
@@ -22,7 +21,6 @@
         </div>
         <tu-shopcart :products="products"></tu-shopcart>
     </div>
-</keep-alive>
 </template>
 <script>
 import ChangeCounts from '../subcomponents/ChangeCounts.vue'
@@ -30,6 +28,7 @@ import ShopCart from '../ShopCart/ShopCart.vue'
 import OneProduct from './OneProduct.vue'
 
 export default {
+  name: "tu-details",
   data: function() {
     return {
       menus: [],
