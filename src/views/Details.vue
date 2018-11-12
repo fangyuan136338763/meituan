@@ -1,5 +1,4 @@
 <template>
-                <keep-alive include="Details">
             <div class="details-container">
                 <div class="details-header">
                     <div class="top">
@@ -14,8 +13,6 @@
                 </div>
                     <tu-details-content :shopMenus="shopMenus" :products="products"></tu-details-content>
             </div>
-                </keep-alive>
-
 </template>
 
 <script>
