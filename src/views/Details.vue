@@ -29,6 +29,7 @@ export default {
     methods: {
         goBack: function(){
             history.go(-1);
+            this.$store.commit('clearCount');
         },
         transformData(data){
             for(var i=0;i<=this.shopMenus.length;i++){

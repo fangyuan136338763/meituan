@@ -33,11 +33,7 @@ export default {
     },
     methods: {
         goBack(){
-            if(!sessionStorage.getItem("id")){
-                this.$router.push('/home');
-            }else{
-                history.go(-1);
-            }
+            history.go(-1);
         },
         toRegisterPage(){
             this.$router.push('/register');
