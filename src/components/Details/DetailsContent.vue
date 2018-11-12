@@ -28,7 +28,7 @@ import ShopCart from '../ShopCart/ShopCart.vue'
 import OneProduct from './OneProduct.vue'
 
 export default {
-  name: "tu-details",
+  name: "DetailsContent",
   data: function() {
     return {
       menus: [],

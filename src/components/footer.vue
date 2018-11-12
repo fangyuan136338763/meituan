@@ -11,7 +11,7 @@
 
 <script>
 export default {
-    name: "Footer",
+    name: "TuFooter",
     data: function(){
         return {
             list:["首页","订单","我的"],

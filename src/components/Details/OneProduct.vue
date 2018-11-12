@@ -19,6 +19,7 @@
 import ChangeCounts from '../subcomponents/ChangeCounts.vue'
 
 export default {
+    name: "OneProduct",
     data: function(){
         return {
 

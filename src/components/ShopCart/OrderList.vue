@@ -13,6 +13,7 @@
 <script>
 import ChangeCounts from '../subcomponents/ChangeCounts.vue'
 export default {
+    name: "OrderList",
     data: function(){
         return {
         }

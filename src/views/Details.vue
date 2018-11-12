@@ -1,4 +1,5 @@
 <template>
+                <keep-alive include="Details">
             <div class="details-container">
                 <div class="details-header">
                     <div class="top">
@@ -11,8 +12,9 @@
                         <li class="selector-item"><span>商家</span></li>
                     </ul>
                 </div>
-                <tu-details-content :shopMenus="shopMenus" :products="products"></tu-details-content>
+                    <tu-details-content :shopMenus="shopMenus" :products="products"></tu-details-content>
             </div>
+                </keep-alive>
 
 </template>
 
