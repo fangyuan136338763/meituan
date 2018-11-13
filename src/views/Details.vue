@@ -23,7 +23,8 @@ export default {
         return {
             isloading: false,
             products: [],
-            shopMenus: []
+            shopMenus: [],
+            id: 0
         }
     },
     methods: {
@@ -44,6 +45,7 @@ export default {
         },
         getDetailData(){
             this.isloading = true;
+            this.id = this.$route.params.sid;
             // console.log(this.$route.params.sid);
             var sid = this.$route.params.sid;
             var url = "http://localhost:5050/product/detail?sid="+sid;
@@ -61,6 +63,16 @@ export default {
         this.getDetailData();
     },
     mounted(){
+    },
+    activated(){
+        console.log(this.$route.params.sid);
+        console.log(this.id)
+        if(this.id!=this.$route.params.sid){
+            this.getDetailData();
+            console.log(this.products);
+        }
+        
+
     },
     components: {
         "tu-details-content": DetailsContent
