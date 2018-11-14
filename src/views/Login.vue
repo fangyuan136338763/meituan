@@ -23,6 +23,7 @@
 </template>
 
 <script>
+// import {Toast} from 'mint-ui'
 export default {
     name: "Login",
     data: function(){
@@ -44,13 +45,27 @@ export default {
                 console.log(res);
                 if(res.data.code==200){
                     sessionStorage.setItem("id",res.data.id);
-                    this.$router.push('/mine');
+                    // this.$router.push('/mine');
+                    var n = 3;
+                    var myToast = null;
+                    var timer = setInterval(()=>{
+                        var msg = '登录成功!'+n+"秒后跳转";
+                        myToast = this.$toast({
+                            message: msg,
+                            position: 'middle'
+                        });
+                        n--;
+                        if(n==0){
+                            myToast.close();
+                            clearInterval(timer);
+                        }
+                    },1000);
+                    
                 }
             });
         }
     },
     created(){
-
     }
 }
 </script>

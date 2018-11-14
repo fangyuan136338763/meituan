@@ -9,9 +9,9 @@
         <p class="location">猜您当前位于：<span class="current">{{position}}</span></p>
         <div class="city-list">
             <div class="city-id" v-for="(item,index) in citys" :key="index">
-                <div class="id">{{item[0].cId}}</div>
-                <ul class="city-item" v-for="city in item" :key="city.id">
-                    <li @click="changeLocation(city.name)"><a href="#" class="city">{{city.name}}</a></li>
+                <div class="id">{{item.title}}</div>
+                <ul class="city-item" v-for="(city,i) in item.lists" :key="i">
+                    <li @click="changeLocation(city)"><a href="#" class="city">{{city}}</a></li>
                 </ul>
             </div>
         </div>
@@ -30,11 +30,12 @@ export default {
   },
   methods: {
     getCitys: function() {
-      this.$http.get("http://localhost:5050/home/location").then(res => {
-        console.log(res);
-        for (var key in res.data) {
-          this.citys.push(res.data[key]);
+      this.$http.get("http://localhost:5050/home/location").then(({data}) => {
+        console.log(data);
+        for (var key in data.city) {
+          this.citys.push(data.city[key]);
         }
+        console.log(this.citys)
       });
     },
     getCurrentPoint: function () {

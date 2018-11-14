@@ -1,7 +1,7 @@
-const Mock = require('mockjs');
+// const Mock = require('mockjs');
 
 
-Mock.mock('http://localhost:5050/home/location',{
+/* Mock.mock('http://localhost:5050/home/location',{
     'cityId_A|20-30':[{
         'id|+1': 1,
         'name': "@city()",
@@ -23,5 +23,5 @@ Mock.mock('http://localhost:5050/home/location',{
         'cId': "D"
     }]
     
-});
+}); */
 
