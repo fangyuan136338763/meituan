@@ -47,16 +47,17 @@ export default {
                     sessionStorage.setItem("id",res.data.id);
                     // this.$router.push('/mine');
                     var n = 3;
-                    var myToast = null;
                     var timer = setInterval(()=>{
                         var msg = '登录成功!'+n+"秒后跳转";
-                        myToast = this.$toast({
+                        var myToast = this.$toast({
                             message: msg,
-                            position: 'middle'
+                            position: 'middle',
+                            duration: 1000
                         });
                         n--;
+                        console.log(n);
                         if(n==0){
-                            myToast.close();
+                            // myToast.close();
                             clearInterval(timer);
                         }
                     },1000);
