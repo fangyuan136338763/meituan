@@ -62,7 +62,7 @@ export default {
             var reg = /^1[34578]\d{9}$/;
             var url = "http://localhost:5050/user/checkphone?uphone="+this.uphone;
             this.$http.get(url).then((res)=>{
-                console.log(res);
+                // console.log(res);
                 if(res.data.code == 401){
                     this.errMsg = res.data.msg;
                     this.isuphone = false;
@@ -122,8 +122,8 @@ export default {
         },
         clearmsg(){
             this.errMsg = "";
-            console.log(this.isuphone,this.isupwd,this.isdupwd);
-            console.log(this.canRegister);
+            // console.log(this.isuphone,this.isupwd,this.isdupwd);
+            // console.log(this.canRegister);
         }
     },
     created(){

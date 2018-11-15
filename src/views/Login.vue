@@ -45,23 +45,35 @@ export default {
                 console.log(res);
                 if(res.data.code==200){
                     sessionStorage.setItem("id",res.data.id);
-                    // this.$router.push('/mine');
                     var n = 3;
+                    var msg = '登录成功!'+n+"秒后跳转"; 
+                    var myToast = this.$toast({
+                        message: msg,
+                            position: 'middle',
+                            duration: 1000
+                        });
                     var timer = setInterval(()=>{
-                        var msg = '登录成功!'+n+"秒后跳转";
-                        var myToast = this.$toast({
+                        n--;
+                        if(n==1){
+                            clearInterval(timer)
+                            setTimeout(()=>{
+                                this.$router.push('/mine')
+                            },1000)
+                        }
+                        // console.log(n);
+                        msg = '登录成功!'+n+"秒后跳转";
+                        myToast = this.$toast({
                             message: msg,
                             position: 'middle',
                             duration: 1000
                         });
-                        n--;
-                        console.log(n);
-                        if(n==0){
-                            // myToast.close();
-                            clearInterval(timer);
-                        }
                     },1000);
-                    
+                }else{
+                    this.$toast({
+                        message: "用户名或密码错误",
+                        duration: 1500,
+                        position: 'middle'
+                    });
                 }
             });
         }
