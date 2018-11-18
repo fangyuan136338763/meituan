@@ -42,6 +42,7 @@ export default {
 </script>
 
 <style scoped>
+
 .list-item {
   display: flex;
   padding: 15px 0 10px;
@@ -62,6 +63,7 @@ export default {
   font-size: 12px;
   color: #a9a9a9;
   margin-bottom: 5px;
+
 }
 .list-content .bottom {
   display: flex;
